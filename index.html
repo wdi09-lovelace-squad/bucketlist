@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title></title>
+    <!-- Bootstrap core CSS -->
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap theme -->
+    <link href="assets/css/bootstrap-theme.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="assets/css/theme.css" rel="stylesheet">
+  </head>
+
+  <body role="document">
+
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">BucketList<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li class="dropdown-header">Users</li>
+                <li><a href="#" data-toggle="modal" data-target="#regModal">Register</a></li>
+                <li><a href="#" data-toggle="modal" data-target="#logModal">Login</a></li>
+                <li role="separator" class="divider"></li>
+                <li class="dropdown-header">Visitors</li>
+                <li><a href="#">How the App works</a></li>
+                <li><a href="#">About the Creator</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav> <!-- end Fixed navbar -->
+
+    <!-- Modal Registration -->
+    <div class="modal fade" id="regModal" role="dialog">
+      <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Please register</h4>
+          </div>
+          <div class="modal-body">
+            <p>
+              <label class="sr-only">Email address</label>
+              <input for="Email" type="text" id="regEmail" class="form-control" placeholder="email address" required autofocus>
+            <br>
+              <label for="regPassword" class="sr-only">Password</label>
+              <input type="text" id="regPassword" class="form-control" placeholder="password" required>
+              <input type="text" id="confirmPassword" class="form-control" placeholder="confirm password" required>
+            </p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal" id="register">Register</button>
+          </div><!--
+          <div class="alert alert-danger fade in" id="regAlert">
+            <a href="#" class="close" data-dismiss="alert">&times;</a>
+            <strong>Registration unsuccessful</strong> -->
+          </div>
+        </div>
+      </div>
+    </div> <!-- end Modal Registration -->
+
+
+    <!-- Modal Login -->
+    <div class="modal fade" id="logModal" role="dialog">
+      <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Please sign in</h4>
+          </div>
+          <div class="modal-body">
+            <p>
+              <label class="sr-only">Email address</label>
+              <input for="Email" type="text" id="logEmail" class="form-control" placeholder="email address" required autofocus>
+            <br>
+              <label for="logPassword" class="sr-only">Password</label>
+              <input type="text" id="logPassword" class="form-control" placeholder="password" required>
+            </p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal" id="login">Sign in</button>
+          </div><!--
+          <div class="alert alert-danger fade in" id="logAlert">
+            <a href="#" class="close" data-dismiss="alert">&times;</a>
+            <strong>Sign in unsuccessful</strong> -->
+          </div>
+        </div>
+      </div>
+    </div> <!-- end modal Login -->
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+  </body>
+</html>
