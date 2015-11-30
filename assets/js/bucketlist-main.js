@@ -58,7 +58,7 @@ $(document).ready(function() {
   $("#login").click(function(){
     blapi.login(
       $("logemail").val(),
-      $("#logPassword").val(),
+      $("#logPassword").val()
       );
   });
 
