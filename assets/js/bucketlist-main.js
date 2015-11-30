@@ -43,5 +43,23 @@ $(document).ready(function() {
         .addTo(foursquarePlaces);
     }
   };
+  // register user
+
+  $("#register").click(function(){
+    blapi.register(
+      $("#regEmail").val(),
+      $("#regPassword").val(),
+      $("#cofirmPassword").val()
+      );
+  });
+
+  // login session
+
+  $("#login").click(function(){
+    blapi.login(
+      $("logemail").val(),
+      $("#logPassword").val(),
+      );
+  });
 
 });
