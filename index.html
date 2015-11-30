@@ -8,12 +8,19 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <title></title>
+    <!--<script src="assets/js/jquery-2.1.4.min.js" type="text/javascript" charset="utf-8" defer></script> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <!-- Mapbox Scripts and Styles -->
+    <script src='https://api.mapbox.com/mapbox.js/v2.2.3/mapbox.js'></script>
+    <link href='https://api.mapbox.com/mapbox.js/v2.2.3/mapbox.css' rel='stylesheet' />
     <!-- Bootstrap core CSS -->
     <link href="assets/css/bootstrap.min.css" rel="stylesheet">
     <!-- Bootstrap theme -->
     <link href="assets/css/bootstrap-theme.min.css" rel="stylesheet">
     <!-- Custom styles for this template -->
     <link href="assets/css/theme.css" rel="stylesheet">
+</style>
   </head>
 
   <body role="document">
@@ -100,8 +107,27 @@
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
+
+<!-- MAIN PAGE -->
+  <div class='col12 main-window' >
+    <div class='center quiet'>Map Canvas
+      <div id='map'></div>
+    </div>
+  </div>
+
+
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="assets/js/bootstrap.min.js"></script>
+
+
+    <!-- Invoking Mapbox API -->
+    <script>
+    'use strict';
+    var L;
+    L.mapbox.accessToken = 'pk.eyJ1Ijoia2VsdmlubWEiLCJhIjoiY2loZjlubXVuMDRlNnRyajdvYWQyMm1oZiJ9.iXunWQwgDy-dDa919ydy1g';
+    var map = L.mapbox.map('map', 'mapbox.streets', { zoomControl: false })
+        .setView([42.36, -71.08], 14);
+
+    new L.Control.Zoom({ position: 'bottomright' }).addTo(map);
+    </script>
   </body>
 </html>
