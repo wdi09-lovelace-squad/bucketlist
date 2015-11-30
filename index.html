@@ -116,7 +116,7 @@
     <div class='center quiet'>Map Canvas
       <div id='map'></div>
     </div>
-  <div id='search-window' class='col3 pad8y fill-darken1 pin-left offcanvas-left animate'>
+  <div id='search-window' class='col3 pad8y pad2x fill-lighten2 pin-left offcanvas-left animate'>
     <div align='right'><a href='#' class='fill-darken2 pad1 space-top2 icon close'></a></div>
     <div align='center'><h2>What to do...</h2></div>
     <form id='search' enctype="multipart/formdata" accept-charset="utf-8" style='text-align: center'>
@@ -128,6 +128,17 @@
       <input class='button' type="submit" value="Search">
     </form>
     <div id='search-results'>
+        <script id='search-result-template'type="text/x-handlebars-template">
+          <div>
+          <ul>
+            {{#each venues}}
+            <li><h5>{{name}}</h5>
+            <a href={{url}}>{{url}}</a></li>
+            {{/each}}
+          </ul>
+          </div>
+        </script>
+      </div>
     </div>
   </div>
 
@@ -145,6 +156,7 @@
 
     new L.Control.Zoom({ position: 'bottomright' }).addTo(map);
     </script>
+    <script src="./assets/js/handlebars-v3.0.3.js"></script>
     <script src='./assets/js/bucketlist-main.js' type="text/javascript" charset="utf-8" defer></script>
   </body>
 </html>

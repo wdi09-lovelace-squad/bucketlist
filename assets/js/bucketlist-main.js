@@ -16,11 +16,15 @@ $(document).ready(function() {
     }).done(function(data){
       foursquarePlaces.clearLayers();
       console.log(data.response);
+      var searchResultHTML = searchResultTemplate(data.response);
+      $('#search-results').html(searchResultHTML);
       searchLayer(data);
     }).fail(function(jqxhr) {
       console.error(jqxhr);
     });
   });
+
+  var searchResultTemplate = Handlebars.compile($('#search-result-template').html());
 
   var foursquarePlaces = L.layerGroup().addTo(map);
 
