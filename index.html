@@ -8,24 +8,24 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <title></title>
-    <!--<script src="assets/js/jquery-2.1.4.min.js" type="text/javascript" charset="utf-8" defer></script> -->
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="assets/js/bootstrap.min.js"></script>
-    <!-- Mapbox Scripts and Styles -->
-    <script src='https://api.mapbox.com/mapbox.js/v2.2.3/mapbox.js'></script>
-    <link href='https://api.mapbox.com/mapbox.js/v2.2.3/mapbox.css' rel='stylesheet' />
-    <link href='https://www.mapbox.com/base/latest/base.css' rel='stylesheet' />
     <!-- Bootstrap core CSS -->
     <link href="assets/css/bootstrap.min.css" rel="stylesheet">
     <!-- Bootstrap theme -->
     <link href="assets/css/bootstrap-theme.min.css" rel="stylesheet">
     <!-- Custom styles for this template -->
     <link href="assets/css/theme.css" rel="stylesheet">
+    <!-- Mapbox Scripts and Styles -->
+    <script src='https://api.mapbox.com/mapbox.js/v2.2.3/mapbox.js'></script>
+    <link href='https://api.mapbox.com/mapbox.js/v2.2.3/mapbox.css' rel='stylesheet' />
+<!--     <link href='https://www.mapbox.com/base/latest/base.css' rel='stylesheet' /> -->
+    <link href="assets/css/base.css" rel="stylesheet"> -->
 </style>
   </head>
 
   <body role="document">
-
+  <div class='col12 main-window' >
     <!-- Fixed navbar -->
     <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container">
@@ -43,11 +43,10 @@
                 <li><a href="#">About the Creator</a></li>
               </ul>
             </li>
-            <li><a href='#search-window'>Search</a>
-            </li>
+            <li><a href='#search-window'>Search</a></li>
           </ul>
-        </div>
-      </div>
+        </div> <!-- end div id navbar -->
+      </div> <!-- end container -->
     </nav> <!-- end Fixed navbar -->
 
     <!-- Modal Registration -->
@@ -112,12 +111,12 @@
     ================================================== -->
 
 <!-- MAIN PAGE -->
-  <div class='col12 main-window' >
+
     <div class='center quiet'>Map Canvas
       <div id='map'></div>
     </div>
   <div id='search-window' class='col3 pad8y pad2x fill-lighten2 pin-left offcanvas-left animate'>
-    <div align='right'><a href='#' class='fill-darken2 pad1 space-top2 icon close'></a></div>
+    <div align='right'><a href='#' class='fill-darken2 pad1 space-top1 icon close'></a></div>
     <div align='center'><h2>What to do...</h2></div>
     <form id='search' enctype="multipart/formdata" accept-charset="utf-8" style='text-align: center'>
       <br>
@@ -156,6 +155,8 @@
 
     new L.Control.Zoom({ position: 'bottomright' }).addTo(map);
     </script>
+
+    <script src="assets/js/bootstrap.min.js"></script>
     <script src="./assets/js/handlebars-v3.0.3.js"></script>
     <script src='./assets/js/bucketlist-main.js' type="text/javascript" charset="utf-8" defer></script>
   </body>
