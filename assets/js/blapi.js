@@ -1,8 +1,8 @@
 'use strict';
 var blapi = {
-  url: 'http://localhost:3000'
+  url: 'http://localhost:3000',
 
-  register: function register(credentials, callback) {
+  register: function (credentials, callback) {
     this.ajax({
       method: 'POST',
       url: this.url + '/signup',
@@ -12,7 +12,7 @@ var blapi = {
     }, callback);
   },
 
-  login: function login(credentials, callback) {
+  login: function (credentials, callback) {
     this.ajax({
       method: 'POST',
       url: this.url + '/login',
@@ -21,5 +21,5 @@ var blapi = {
       dataType: 'json'
     }, callback);
   },
-};
+}
 

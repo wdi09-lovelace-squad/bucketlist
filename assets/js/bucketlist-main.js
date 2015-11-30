@@ -1,4 +1,5 @@
 'use strict';
+var blapi = blapi || {};
 
 $(document).ready(function() {
   $('#search').on('submit', function(e){
@@ -43,23 +44,39 @@ $(document).ready(function() {
         .addTo(foursquarePlaces);
     }
   };
+
   // register user
-
-  $("#register").click(function(){
-    blapi.register(
-      $("#regEmail").val(),
-      $("#regPassword").val(),
-      $("#cofirmPassword").val()
-      );
+  $("#register").click(function(e){
+    var credentials = {
+      username: $("#regEmail").val(),
+      password: $("#regPassword").val(),
+      password: $("#confirmPassword").val()
+    };
+    function cb(error, data) {
+      if (error) {
+        alert('Registration Failed');
+        return;
+      }
+    };
+    e.preventDefault();
+    blapi.register(credentials, cb);
   });
 
-  // login session
-
-  $("#login").click(function(){
-    blapi.login(
-      $("logemail").val(),
-      $("#logPassword").val()
-      );
+  // login user
+  $("#login").click(function(e){
+    var credentials = {
+      username: $("#logEmail").val(),
+      password: $("#logPassword").val()
+    };
+    function cb(error, data) {
+      if (error) {
+        alert('Login Failed');
+        return;
+      }
+    };
+    e.preventDefault();
+    blapi.login(credentials, cb);
   });
 
-});
+});  // end document ready function
+
