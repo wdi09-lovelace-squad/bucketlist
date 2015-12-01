@@ -39,8 +39,7 @@ $(document).ready(function() {
             'marker-size': 'small'
           })
         })
-      .bindPopup('<strong><a href="https://foursquare.com/v/' + venue.id + '">' +
-        venue.name + '</a></strong><br>' + venue.categories[0].name)
+      .bindPopup('<strong><a href="https://foursquare.com/v/' + venue.id + '">' + venue.name + '</a></strong><br>' + venue.categories[0].name + '<br><button type="button" class="btn-xs add-to-list" value="' + venue.name + '"">Add To List</button>')
         .addTo(foursquarePlaces);
     }
   };
@@ -79,6 +78,19 @@ $(document).ready(function() {
 
     }
     blapi.logout(cb);
+  });
+
+  $("#map").on('click', '.add-to-list', function(){
+    var venue = {
+      venue: $(this).attr('value')
+    };
+    var cb = function(err) {
+      if (err) {
+        console.error(err);
+      }
+      console.log(venue);
+    };
+    blapi.addToList(venue, cb);
   });
 
 });  // end document ready function

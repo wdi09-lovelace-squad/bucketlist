@@ -42,5 +42,16 @@ var blapi = {
     }, callback);
   },
 
+  addToList: function (venue, callback) {
+  this.ajax({
+    method: 'PUT',
+    url: this.url + '/doStuff',
+    contentType: 'application/json; charset=utf-8',
+    data: JSON.stringify(venue),
+    xhrFields: { withCredentials: true }, // tells jquery to use cookies
+    dataType: 'json'
+  }, callback);
+},
+
 } // end blapi
 
