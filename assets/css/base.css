@@ -1,8 +1,7 @@
 /* -------------------------------------------------------
 This file is Copyright (C) 2015 Mapbox Inc.  All rights reserved.
 */
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+html, body, div, span, applet, object, iframe, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
 del, dfn, em, img, ins, kbd, q, s, samp,
 small, strike, strong, sub, sup, tt, var,
@@ -53,43 +52,6 @@ button::-moz-focus-inner {
   font:15px/20px 'Open Sans', sans-serif;
 }
 
-/* @FontFace
-------------------------------------------------------- */
-@font-face {
-  font-family:'Brandon';
-    src:url('brandon_blk.eot');
-    src:url('brandon_blk.eot#iefix') format('embedded-opentype'),
-        url('brandon_blk.woff') format('woff');
-  }
-
-@font-face {
-  font-family:'Open Sans';
-    src:url('opensans-regular.eot');
-    src:url('opensans-regular.eot#iefix') format('embedded-opentype'),
-        url('opensans-regular.woff') format('woff');
-  }
-
-@font-face {
-  font-family:'Open Sans Italic';
-    src:url('opensans-italic.eot');
-    src:url('opensans-italic.eot#iefix') format('embedded-opentype'),
-        url('opensans-italic.woff') format('woff');
-  }
-
-@font-face {
-  font-family:'Open Sans Bold';
-    src:url('opensans-bold.eot');
-    src:url('opensans-bold.eot#iefix') format('embedded-opentype'),
-        url('opensans-bold.woff') format('woff');
-  }
-
-@font-face {
-  font-family:'Open Sans Bold Italic';
-    src:url('opensans-bolditalic.eot');
-    src:url('opensans-bolditalic.eot#iefix') format('embedded-opentype'),
-        url('opensans-bolditalic.woff') format('woff');
-  }
-
 /* Inline Elements: Defaults
 ------------------------------------------------------- */
 body,
@@ -104,17 +66,6 @@ textarea {
 body { background:#fff; }
 .dark { color:#fff; }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family:'Open Sans Bold', sans-serif;
-  font-weight:normal;
-  margin:0;
-  }
-
 em h1, h1 em,
 em h2, h2 em,
 em h3, h3 em,
@@ -122,27 +73,6 @@ em h4, h4 em,
 em h5, h5 em,
 em h6, h6 em {
   font-family:'Open Sans Bold Italic', sans-serif;
-  }
-
-h1 {
-  font-size:30px;
-  line-height:40px;
-  }
-h2 {
-  font-size:22px;
-  line-height:30px;
-  padding-top: 5px;
-  padding-bottom:5px;
-  }
-
-h3 {
-  font-size:15px;
-  line-height:20px;
-  }
-
-h4, h5, h6 {
-  font-size:12px;
-  line-height:20px;
   }
 
 p { margin-bottom:20px; }

@@ -20,7 +20,7 @@
     <script src='https://api.mapbox.com/mapbox.js/v2.2.3/mapbox.js'></script>
     <link href='https://api.mapbox.com/mapbox.js/v2.2.3/mapbox.css' rel='stylesheet' />
 <!--     <link href='https://www.mapbox.com/base/latest/base.css' rel='stylesheet' /> -->
-    <link href="assets/css/base.css" rel="stylesheet"> -->
+    <link href="assets/css/base.css" rel="stylesheet">
 </style>
   </head>
 
@@ -35,15 +35,18 @@
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">BucketList<span class="caret"></span></a>
               <ul class="dropdown-menu">
                 <li class="dropdown-header">Users</li>
-                <li><a href="#" data-toggle="modal" data-target="#regModal">Register</a></li>
                 <li><a href="#" data-toggle="modal" data-target="#logModal">Login</a></li>
+                <li><a href="#" id="logout">Logout</a></li>
                 <li role="separator" class="divider"></li>
-                <li class="dropdown-header">Visitors</li>
-                <li><a href="#">How the App works</a></li>
-                <li><a href="#">About the Creator</a></li>
+          <!--  <li class="dropdown-header">Visitors</li> -->
+                <li><a href="#" data-toggle="modal" data-target="#regModal">Register</a></li>
+          <!--  <li><a href="#">How the App works</a></li>
+                <li><a href="#">About the Creator</a></li> -->
               </ul>
             </li>
             <li><a href='#search-window'>Search</a></li>
+            <li><a href='#bucketlist-window'>My Bucketlist</a></li>
+            <li><a href="#" id='current-user'>Logged in as</a></li>
           </ul>
         </div> <!-- end div id navbar -->
       </div> <!-- end container -->
@@ -158,6 +161,7 @@
 
     <script src="assets/js/bootstrap.min.js"></script>
     <script src="./assets/js/handlebars-v3.0.3.js"></script>
+    <script src="./assets/js/blapi.js" type="text/javascript" charset="utf-8"></script>
     <script src='./assets/js/bucketlist-main.js' type="text/javascript" charset="utf-8" defer></script>
   </body>
 </html>

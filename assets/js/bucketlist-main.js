@@ -1,4 +1,5 @@
 'use strict';
+var blapi = blapi || {};
 
 $(document).ready(function() {
   $('#search').on('submit', function(e){
@@ -38,28 +39,59 @@ $(document).ready(function() {
             'marker-size': 'small'
           })
         })
-      .bindPopup('<strong><a href="https://foursquare.com/v/' + venue.id + '">' +
-        venue.name + '</a></strong><br>' + venue.categories[0].name)
+      .bindPopup('<strong><a href="https://foursquare.com/v/' + venue.id + '">' + venue.name + '</a></strong><br>' + venue.categories[0].name + '<br><button type="button" class="btn-xs add-to-list" value="' + venue.name + '"">Add To List</button>')
         .addTo(foursquarePlaces);
     }
   };
+
   // register user
-
+  $("#regAlert").hide();
   $("#register").click(function(){
-    blapi.register(
-      $("#regEmail").val(),
-      $("#regPassword").val(),
-      $("#cofirmPassword").val()
-      );
+    var credentials = {
+      username: $("#regEmail").val(),
+      password: $("#regPassword").val(),
+      password: $("#confirmPassword").val()
+    };
+    var cb = function() {
+
+    }
+    blapi.register(credentials, cb);
   });
 
-  // login session
-
+  // login user
+  $("#logAlert").hide();
   $("#login").click(function(){
-    blapi.login(
-      $("logemail").val(),
-      $("#logPassword").val()
-      );
+    var credentials = {
+      username: $("#logEmail").val(),
+      password: $("#logPassword").val()
+    };
+    var cb = function() {
+      $('#current-user').html($("#logEmail").val());
+      console.log($('#logEmail').val());
+    }
+    blapi.login(credentials, cb);
   });
 
-});
+  // logout user
+  $("#logout").click(function(){
+    var cb = function() {
+
+    }
+    blapi.logout(cb);
+  });
+
+  $("#map").on('click', '.add-to-list', function(){
+    var venue = {
+      venue: $(this).attr('value')
+    };
+    var cb = function(err) {
+      if (err) {
+        console.error(err);
+      }
+      console.log(venue);
+    };
+    blapi.addToList(venue, cb);
+  });
+
+});  // end document ready function
+
