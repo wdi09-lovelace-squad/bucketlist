@@ -44,6 +44,7 @@
               </ul>
             </li>
             <li><a href='#search-window'>Search</a></li>
+            <li><a href='#list-window'>My List</a></li>
           </ul>
         </div> <!-- end div id navbar -->
       </div> <!-- end container -->
@@ -126,6 +127,7 @@
       <br>
       <input class='button' type="submit" value="Search">
     </form>
+
     <div id='search-results'>
         <script id='search-result-template'type="text/x-handlebars-template">
           <div>
@@ -141,6 +143,24 @@
     </div>
   </div>
 
+    <div id='list-window' class='col3 pad8y pad2x fill-lighten2 pin-right offcanvas-right animate'>
+        <div align='left'><a href='#' class='fill-darken2 pad1 space-top1 icon close'></a></div>
+        <div align='center'><h2>My List</h2></div>
+
+    <div id='search-results'>
+        <script id='search-result-template'type="text/x-handlebars-template">
+          <div>
+          <ul>
+            {{#each venues}}
+            <li><h5>{{name}}</h5>
+            <a href={{url}}>{{url}}</a></li>
+            {{/each}}
+          </ul>
+          </div>
+        </script>
+      </div>
+    </div>
+  </div>
 
     <!-- Placed at the end of the document so the pages load faster -->
 
