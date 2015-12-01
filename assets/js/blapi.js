@@ -2,6 +2,15 @@
 var blapi = {
   url: 'http://localhost:3000',
 
+  // boiler plate ajax callback wrapper
+  ajax: function (config, cb) {
+    $.ajax(config).done(function(data, textStatus, jqxhr) {
+      cb(null, data);
+    }).fail(function(jqxhr, status, error) {
+      cb({jqxhr: jqxhr, status: status, error: error});
+    });
+  },
+
   register: function (credentials, callback) {
     this.ajax({
       method: 'POST',

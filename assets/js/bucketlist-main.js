@@ -46,35 +46,27 @@ $(document).ready(function() {
   };
 
   // register user
-  $("#register").click(function(e){
+  $("#register").click(function(){
     var credentials = {
       username: $("#regEmail").val(),
       password: $("#regPassword").val(),
       password: $("#confirmPassword").val()
     };
-    function cb(error, data) {
-      if (error) {
-        alert('Registration Failed');
-        return;
-      }
-    };
-    e.preventDefault();
+    var cb = function() {
+
+    }
     blapi.register(credentials, cb);
   });
 
   // login user
-  $("#login").click(function(e){
+  $("#login").click(function(){
     var credentials = {
       username: $("#logEmail").val(),
       password: $("#logPassword").val()
     };
-    function cb(error, data) {
-      if (error) {
-        alert('Login Failed');
-        return;
-      }
-    };
-    e.preventDefault();
+    var cb = function() {
+
+    }
     blapi.login(credentials, cb);
   });
 
