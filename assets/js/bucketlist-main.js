@@ -46,6 +46,7 @@ $(document).ready(function() {
   };
 
   // register user
+  $("#regAlert").hide();
   $("#register").click(function(){
     var credentials = {
       username: $("#regEmail").val(),
@@ -59,6 +60,7 @@ $(document).ready(function() {
   });
 
   // login user
+  $("#logAlert").hide();
   $("#login").click(function(){
     var credentials = {
       username: $("#logEmail").val(),
@@ -68,6 +70,14 @@ $(document).ready(function() {
 
     }
     blapi.login(credentials, cb);
+  });
+
+  // logout user
+  $("#logout").click(function(){
+    var cb = function() {
+
+    }
+    blapi.logout(cb);
   });
 
 });  // end document ready function

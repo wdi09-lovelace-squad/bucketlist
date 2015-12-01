@@ -27,8 +27,20 @@ var blapi = {
       url: this.url + '/login',
       contentType: 'application/json; charset=utf-8',
       data: JSON.stringify(credentials),
+      xhrFields: { withCredentials: true }, // tells jquery to use cookies
       dataType: 'json'
     }, callback);
   },
-}
+
+  logout: function (callback) {
+    this.ajax({
+      method: 'POST',
+      url: this.url + '/logout',
+      contentType: 'application/json; charset=utf-8',
+      xhrFields: { withCredentials: true }, // tells jquery to use cookies
+      dataType: 'json'
+    }, callback);
+  },
+
+} // end blapi
 
