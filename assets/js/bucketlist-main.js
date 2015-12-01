@@ -93,5 +93,19 @@ $(document).ready(function() {
     blapi.addToList(venue, cb);
   });
 
+  var listTemplate = Handlebars.compile($('#list-template').html());
+
+  $('#show-list').click(function(){
+    var cb = function(err, data){
+      if (err) {
+        console.error(err);
+      }
+      var listTemplateHTML = listTemplate({ list: data.list });
+      $('#list-results').html(listTemplateHTML);
+      console.log(data);
+    };
+    blapi.showList(cb);
+  });
+
 });  // end document ready function
 

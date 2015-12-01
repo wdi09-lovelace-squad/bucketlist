@@ -55,7 +55,7 @@ var blapi = {
     }, callback);
   },
 
-  showList: function (callback) {
+  showList: function(callback) {
     this.ajax({
       method: 'GET',
       url: this.url + '/doStuff',

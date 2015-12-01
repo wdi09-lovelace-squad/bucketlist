@@ -21,7 +21,7 @@
     <link href='https://api.mapbox.com/mapbox.js/v2.2.3/mapbox.css' rel='stylesheet' />
 <!--     <link href='https://www.mapbox.com/base/latest/base.css' rel='stylesheet' /> -->
     <link href="assets/css/base.css" rel="stylesheet">
-</style>
+
   </head>
 
   <body role="document">
@@ -45,7 +45,7 @@
               </ul>
             </li>
             <li><a href='#search-window'>Search</a></li>
-            <li><a href='#bucketlist-window'>My Bucketlist</a></li>
+            <li><a href='#list-window' id='show-list'>My Bucketlist</a></li>
             <li><a href="#" id='current-user'>Logged in as</a></li>
           </ul>
         </div> <!-- end div id navbar -->
@@ -115,9 +115,10 @@
 
 <!-- MAIN PAGE -->
 
-    <div class='center quiet'>Map Canvas
-      <div id='map'></div>
-    </div>
+  <div class='center quiet'>Map Canvas
+    <div id='map'></div>
+  </div>
+  <!-- Search Window - left side -->
   <div id='search-window' class='col3 pad8y pad2x fill-lighten2 pin-left offcanvas-left animate'>
     <div align='right'><a href='#' class='fill-darken2 pad1 space-top1 icon close'></a></div>
     <div align='center'><h2>What to do...</h2></div>
@@ -144,6 +145,24 @@
     </div>
   </div>
 
+  <!-- List Window - right side  -->
+  <div id='list-window' class='col3 pad8y pad2x fill-lighten2 pin-right offcanvas-right animate'>
+  <div align='left'><a href='#' class='fill-darken2 pad1 space-top1 icon close'></a></div>
+  <div align='center'><h2>YOLO</h2></div>
+  <div id='list-results'>
+      <script id='list-template'type="text/x-handlebars-template">
+        <div>
+        <ul>
+          {{#each list}}
+          <li><h5>Venue: {{venue}}</h5>
+          Note: {{note}}
+          {{/each}}
+        </ul>
+        </div>
+      </script>
+    </div>
+  </div>
+</div>
 
     <!-- Placed at the end of the document so the pages load faster -->
 
