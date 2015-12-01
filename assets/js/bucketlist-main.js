@@ -67,7 +67,8 @@ $(document).ready(function() {
       password: $("#logPassword").val()
     };
     var cb = function() {
-
+      $('#current-user').html($("#logEmail").val());
+      console.log($('#logEmail').val());
     }
     blapi.login(credentials, cb);
   });
