@@ -73,9 +73,10 @@ var blapi = {
     }, callback);
   },
 
-  deleteItem: function (callback) {
+  deleteItem: function (item, callback) {
     this.ajax({
       method: 'DELETE',
+      data: item,
       url: this.url + '/doStuff',
       dataType: 'json'
     }, callback);

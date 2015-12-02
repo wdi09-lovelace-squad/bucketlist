@@ -129,5 +129,21 @@ $(document).ready(function() {
     });
   });
 
+  // Delete Post
+
+  $('#list-results').on('click', '.delete-item', function(e){
+    e.preventDefault();
+    var itemID = this.dataset.id;
+    var item = { _id: itemID };
+    blapi.deleteItem(item, function(err){
+      if (err){
+        console.error(err);
+      }
+      console.log(JSON.stringify(item) + ' deleted');
+      blapi.showList(refreshList);
+    });
+  });
+
+
 });  // end document ready function
 
