@@ -1,6 +1,7 @@
 body {
   padding-top: 70px;
   padding-bottom: 30px;
+  overflow: hidden;
 }
 
 .theme-dropdown .dropdown-menu {
@@ -15,4 +16,21 @@ body {
 
 .theme-showcase .navbar .container {
   width: auto;
+}
+
+.main-window {
+  margin:0;
+  padding:0;
+  top: 70px;
+}
+
+#map {
+  position:absolute;
+  top:0;
+  bottom:0;
+  width:100%;
+}
+
+.slider {
+  overflow: scroll;
 }
