@@ -27,6 +27,7 @@ $(document).ready(function() {
 
   var searchResultTemplate = Handlebars.compile($('#search-result-template').html());
 
+  // L and map ARE defined in index.html
   var foursquarePlaces = L.layerGroup().addTo(map);
 
   var searchLayer = function(data) {
@@ -45,54 +46,36 @@ $(document).ready(function() {
   };
 
   // register user
-  $("#regAlert").hide();
-  $("#register").click(function(){
+  $('#register').click(function(){
     var credentials = {
-      username: $("#regEmail").val(),
-      password: $("#regPassword").val(),
-      password: $("#confirmPassword").val()
+      username: $('#regUsername').val(),
+      password: $('#regPassword').val(),
+      confirmpassword: $('#confirmPassword').val()
     };
     var cb = function() {
-
-    }
+    };
     blapi.register(credentials, cb);
   });
 
   // login user
-  $("#logAlert").hide();
-  $("#login").click(function(){
+  $('#login').click(function(){
     var credentials = {
-      username: $("#logEmail").val(),
-      password: $("#logPassword").val()
+      username: $('#logUsername').val(),
+      password: $('#logPassword').val()
     };
     var cb = function() {
-      $('#current-user').html($("#logEmail").val());
-      console.log($('#logEmail').val());
-    }
+      $('#current-user').html($('#logUsername').val());
+      console.log($('#logUsername').val());
+    };
     blapi.login(credentials, cb);
   });
 
   // logout user
-  $("#logout").click(function(){
+  $('#logout').click(function(){
     var cb = function() {
-
     };
     blapi.logout(cb);
   });
-
-  $("#map").on('click', '.add-to-list', function(){
-    var venue = {
-      venue: $(this).attr('value')
-    };
-    blapi.addToList(venue, function(err){
-      if (err) {
-        console.error(err);
-      }
-      blapi.showList(refreshList);
-    });
-  });
-
-  var listTemplate = Handlebars.compile($('#list-template').html());
 
   var refreshList = function(err, data){
     if (err) {
@@ -101,6 +84,20 @@ $(document).ready(function() {
     var listTemplateHTML = listTemplate({ list: data.list });
     $('#list-results').html(listTemplateHTML);
   };
+
+  $('#map').on('click', '.add-to-list', function(){
+    var venue = {
+      venue: $(this).attr('value')
+    };
+    blapi.addToList(venue, function (err){
+      if (err) {
+        console.error(err);
+      }
+      blapi.showList(refreshList);
+    });
+  });
+
+  var listTemplate = Handlebars.compile($('#list-template').html());
 
   $('#show-list').click(function(){
     blapi.showList(refreshList);
@@ -146,4 +143,3 @@ $(document).ready(function() {
 
 
 });  // end document ready function
-
