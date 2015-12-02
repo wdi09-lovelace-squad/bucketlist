@@ -7,8 +7,8 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="">
     <meta name="author" content="">
-    <title></title>
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <title>BucketList</title>
+    <!-- jQuery (for Bootstrap's JS plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!-- Bootstrap core CSS -->
     <link href="assets/css/bootstrap.min.css" rel="stylesheet">
@@ -16,13 +16,13 @@
     <link href="assets/css/bootstrap-theme.min.css" rel="stylesheet">
     <!-- Custom styles for this template -->
     <link href="assets/css/theme.css" rel="stylesheet">
+    <!-- Font Awesome! CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <!-- Mapbox Scripts and Styles -->
     <script src='https://api.mapbox.com/mapbox.js/v2.2.3/mapbox.js'></script>
     <link href='https://api.mapbox.com/mapbox.js/v2.2.3/mapbox.css' rel='stylesheet' />
-<!--     <link href='https://www.mapbox.com/base/latest/base.css' rel='stylesheet' /> -->
+    <!--     <link href='https://www.mapbox.com/base/latest/base.css' rel='stylesheet' /> -->
     <link href="assets/css/base.css" rel="stylesheet">
-    <!-- Font Awesome! CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
   </head>
 
   <body role="document">
@@ -62,14 +62,18 @@
             <h4 class="modal-title">Please register</h4>
           </div>
           <div class="modal-body">
-            <p>
-              <label class="sr-only">Username</label>
-              <input for="Username" type="text" id="regUsername" class="form-control" placeholder="Username" required autofocus>
-            <br>
-              <label for="regPassword" class="sr-only">Password</label>
-              <input type="text" id="regPassword" class="form-control" placeholder="password" required>
-              <input type="text" id="confirmPassword" class="form-control" placeholder="confirm password" required>
-            </p>
+            <div class="input-group margin-bottom-sm">
+              <span class="input-group-addon"><i class="fa fa-user fa-fw"></i></span>
+              <input class="form-control" type="text" id="regUsername" placeholder="username" required autofocus>
+            </div>
+            <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-key fa-fw"></i></span>
+              <input class="form-control" type="password" id="regPassword" placeholder="password" required>
+            </div>
+            <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-key fa-fw"></i></span>
+              <input class="form-control" type="password" id="confirmPassword" placeholder="confirm password" required>
+            </div>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal" id="register">Register</button>
@@ -162,25 +166,44 @@
 
     <!-- List Window - right side  -->
     <div id='list-window' class='col4 pad8y pad2x fill-lighten2 pin-right offcanvas-right animate slider'>
-      <div align='left'><a href='#' class='fill-darken2 pad1 space-top1 icon close'></a></div>
-      <div align='center'><h2>YOLO</h2></div>
-      <div id='list-results'>
-      <script id='list-template'type="text/x-handlebars-template">
-      <div>
-        <ul>
-        {{#each list}}
-          <li><h5>Venue: {{venue}}</h5>
-            Note: {{note}}
-            <form class="patch-form" style="display:" data-id={{_id}}>
-              <input type="text" name="note" placeholder="What Do You Want to Do?"></input>
-              <input type="submit" value="Submit"></input>
-            </form>
-            <button class='delete-item glyphicon glyphicon-remove' data-id={{_id}}>
-          </li>
-        {{/each}}
-        </ul>
+      <div align='left'>
+        <a href='#' class='fill-darken2 pad1 space-top1 icon close'></a>
       </div>
-      </script>
+      <div align='center'>
+        <h2>YOLO</h2>
+      </div>
+      <div id='list-results'>
+        <script id='list-template'type="text/x-handlebars-template">
+        <div>
+          <ul class="userList">
+            {{#each list}}
+              <li class="card singleListItem" data-id={{data-id}}>
+                <div class="contentHolderList">
+                  <div class="venueName">
+                    <h5>Venue: {{venue}} <a href="#" class='delete-item' data-id={{_id}}><i class="fa fa-trash-o fa-fw"></i></a></h5>
+                  </div>
+                  <div class="userNote">
+                    <p>
+                    Note: {{note}}
+                    <a href="#" class='show-edit' data-id={{_id}}><i class="fa fa-pencil fa-fw"></i></a>
+                    </p>
+                    <form class="patch-form" style="display:" data-id={{_id}}>
+                      <input type="text" name="note" placeholder="What Do You Want to Do?"></input>
+                      <input type="submit" value="Submit"></input>
+                    </form>
+                  </div>
+                  <div class="userMark">
+                    <p>
+                      <a href="#" class='star-item' data-id={{_id}}><i class="fa fa-star fa-fw"></i></a>
+                      Completed
+                    </p>
+                  </div>
+                </div>
+              </li>
+            {{/each}}
+          </ul>
+        </div>
+        </script>
       </div> <!-- end list results -->
     </div> <!-- end list window -->
 

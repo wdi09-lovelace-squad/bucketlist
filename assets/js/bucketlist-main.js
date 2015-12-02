@@ -103,8 +103,15 @@ $(document).ready(function() {
     blapi.showList(refreshList);
   });
 
-  // Note Patch Click Handler
+// Show Update Form
+  // $('#list-results').on('click', '.show-edit', function(e){
+  //   e.preventDefault();
+  //   var itemID = this.dataset.id;
+  //   console.log($('.patch-form').find('[data-id="' + itemID + '"]').css());
+  //   $('.patch-form').find("[data-id='" + itemID + "']").css('display:');
+  // });
 
+  // Note Patch Click Handler
   $('#list-results').on('submit', '.patch-form', function(e){
     e.preventDefault();
 
@@ -127,7 +134,6 @@ $(document).ready(function() {
   });
 
   // Delete Post
-
   $('#list-results').on('click', '.delete-item', function(e){
     e.preventDefault();
     var itemID = this.dataset.id;
