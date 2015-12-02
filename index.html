@@ -46,7 +46,7 @@
               </li>
               <li><a href='#search-window'>Search</a></li>
               <li><a href='#list-window' id='show-list'>My Bucketlist</a></li>
-              <li><a href="#" id='current-user'>Logged in as</a></li>
+              <li><a href="#" id='current-user'>Guest</a></li>
             </ul>
           </div> <!-- end div id navbar -->
         </div> <!-- end container -->
@@ -142,7 +142,7 @@
       </div>
 
       <!-- List Window - right side  -->
-    <div id='list-window' class='col3 pad8y pad2x fill-lighten2 pin-right offcanvas-right animate slider'>
+    <div id='list-window' class='col4 pad8y pad2x fill-lighten2 pin-right offcanvas-right animate slider'>
       <div align='left'><a href='#' class='fill-darken2 pad1 space-top1 icon close'></a></div>
       <div align='center'><h2>YOLO</h2></div>
       <div id='list-results'>
@@ -152,6 +152,11 @@
             {{#each list}}
             <li><h5>Venue: {{venue}}</h5>
             Note: {{note}}
+            <form class="patch-form" style="display:" data-id={{_id}}>
+              <input type="text" name="note" placeholder="What Do You Want to Do?"></input>
+              <input type="submit" value="Submit"></input>
+            </form>
+            </li>
             {{/each}}
           </ul>
           </div>

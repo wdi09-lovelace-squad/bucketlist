@@ -50,8 +50,8 @@ var blapi = {
       url: this.url + '/doStuff',
       contentType: 'application/json; charset=utf-8',
       data: JSON.stringify(venue),
-      xhrFields: { withCredentials: true }, // tells jquery to use cookies
-      dataType: 'json'
+      xhrFields: { withCredentials: true } // tells jquery to use cookies
+      // dataType: 'json'
     }, callback);
   },
 
@@ -69,8 +69,7 @@ var blapi = {
       url: this.url + '/doStuff',
       contentType: 'application/json; charset=utf-8',
       data: JSON.stringify(updateList),
-      xhrFields: { withCredentials: true }, // tells jquery to use cookies
-      dataType: 'json'
+      xhrFields: { withCredentials: true } // tells jquery to use cookies
     }, callback);
   },
 

@@ -31,6 +31,6 @@ body {
   width:100%;
 }
 
-slider {
+.slider {
   overflow: scroll;
 }

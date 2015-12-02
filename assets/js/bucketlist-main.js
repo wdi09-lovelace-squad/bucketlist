@@ -35,11 +35,11 @@ $(document).ready(function() {
       var latlng = L.latLng(venue.location.lat, venue.location.lng);
       var marker = L.marker(latlng, {
           icon: L.mapbox.marker.icon({
-            'marker-color': '#3bb2d0',
+            'marker-color': '#fd8b34',
             'marker-size': 'small'
           })
         })
-      .bindPopup('<strong><a href="https://foursquare.com/v/' + venue.id + '">' + venue.name + '</a></strong><br>' + venue.categories[0].name + '<br><button type="button" class="btn-xs add-to-list" value="' + venue.name + '"">Add To List</button>')
+      .bindPopup('<strong><a href="https://foursquare.com/v/' + venue.id + '">' + venue.name + '</a></strong><br>' + venue.categories[0].name + '<br><a href="#list-window"><button type="button" class="btn-xs add-to-list" value="' + venue.name + '"">Add To List</button></a>')
         .addTo(foursquarePlaces);
     }
   };
@@ -76,7 +76,7 @@ $(document).ready(function() {
   $("#logout").click(function(){
     var cb = function() {
 
-    }
+    };
     blapi.logout(cb);
   });
 
@@ -84,27 +84,49 @@ $(document).ready(function() {
     var venue = {
       venue: $(this).attr('value')
     };
-    var cb = function(err) {
+    blapi.addToList(venue, function(err){
       if (err) {
         console.error(err);
       }
-      console.log(venue);
-    };
-    blapi.addToList(venue, cb);
+      blapi.showList(refreshList);
+    });
   });
 
   var listTemplate = Handlebars.compile($('#list-template').html());
 
+  var refreshList = function(err, data){
+    if (err) {
+      console.error(err);
+    }
+    var listTemplateHTML = listTemplate({ list: data.list });
+    $('#list-results').html(listTemplateHTML);
+  };
+
   $('#show-list').click(function(){
-    var cb = function(err, data){
+    blapi.showList(refreshList);
+  });
+
+  // Note Patch Click Handler
+
+  $('#list-results').on('submit', '.patch-form', function(e){
+    e.preventDefault();
+
+    var itemID = this.dataset.id;
+    var noteContents = $(this).find('input[name="note"]').val();
+
+    var updatedNote = {
+      _id: itemID,
+      note: noteContents
+    };
+
+    console.log(updatedNote);
+
+    blapi.updateList(updatedNote, function(err){
       if (err) {
         console.error(err);
       }
-      var listTemplateHTML = listTemplate({ list: data.list });
-      $('#list-results').html(listTemplateHTML);
-      console.log(data);
-    };
-    blapi.showList(cb);
+      blapi.showList(refreshList);
+    });
   });
 
 });  // end document ready function
