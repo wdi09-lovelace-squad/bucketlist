@@ -26,143 +26,141 @@
 
   <body role="document">
   <div class='col12 main-window' >
-    <!-- Fixed navbar -->
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container">
-        <div id="navbar" class="navbar-collapse collapse">
-          <ul class="nav navbar-nav">
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">BucketList<span class="caret"></span></a>
-              <ul class="dropdown-menu">
-                <li class="dropdown-header">Users</li>
-                <li><a href="#" data-toggle="modal" data-target="#logModal">Login</a></li>
-                <li><a href="#" id="logout">Logout</a></li>
-                <li role="separator" class="divider"></li>
-          <!--  <li class="dropdown-header">Visitors</li> -->
-                <li><a href="#" data-toggle="modal" data-target="#regModal">Register</a></li>
-          <!--  <li><a href="#">How the App works</a></li>
-                <li><a href="#">About the Creator</a></li> -->
+      <!-- Fixed navbar -->
+      <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">BucketList<span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li class="dropdown-header">Users</li>
+                  <li><a href="#" data-toggle="modal" data-target="#logModal">Login</a></li>
+                  <li><a href="#" id="logout">Logout</a></li>
+                  <li role="separator" class="divider"></li>
+            <!--  <li class="dropdown-header">Visitors</li> -->
+                  <li><a href="#" data-toggle="modal" data-target="#regModal">Register</a></li>
+            <!--  <li><a href="#">How the App works</a></li>
+                  <li><a href="#">About the Creator</a></li> -->
+                </ul>
+              </li>
+              <li><a href='#search-window'>Search</a></li>
+              <li><a href='#list-window' id='show-list'>My Bucketlist</a></li>
+              <li><a href="#" id='current-user'>Logged in as</a></li>
+            </ul>
+          </div> <!-- end div id navbar -->
+        </div> <!-- end container -->
+      </nav> <!-- end Fixed navbar -->
+
+      <!-- Modal Registration -->
+      <div class="modal fade" id="regModal" role="dialog">
+        <div class="modal-dialog modal-sm">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Please register</h4>
+            </div>
+            <div class="modal-body">
+              <p>
+                <label class="sr-only">Email address</label>
+                <input for="Email" type="text" id="regEmail" class="form-control" placeholder="email address" required autofocus>
+              <br>
+                <label for="regPassword" class="sr-only">Password</label>
+                <input type="text" id="regPassword" class="form-control" placeholder="password" required>
+                <input type="text" id="confirmPassword" class="form-control" placeholder="confirm password" required>
+              </p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal" id="register">Register</button>
+            </div>
+            <div class="alert alert-danger fade in" id="regAlert">
+              <a href="#" class="close" data-dismiss="alert">&times;</a>
+              <strong>Registration unsuccessful</strong>
+            </div>
+          </div>
+        </div>
+      </div> <!-- end Modal Registration -->
+
+
+      <!-- Modal Login -->
+      <div class="modal fade" id="logModal" role="dialog">
+        <div class="modal-dialog modal-sm">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Please sign in</h4>
+            </div>
+            <div class="modal-body">
+              <p>
+                <label class="sr-only">Email address</label>
+                <input for="Email" type="text" id="logEmail" class="form-control" placeholder="email address" required autofocus>
+              <br>
+                <label for="logPassword" class="sr-only">Password</label>
+                <input type="text" id="logPassword" class="form-control" placeholder="password" required>
+              </p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal" id="login">Sign in</button>
+            </div>
+            <div class="alert alert-danger fade in" id="logAlert">
+              <a href="#" class="close" data-dismiss="alert">&times;</a>
+              <strong>Sign in unsuccessful</strong>
+            </div>
+          </div>
+        </div>
+      </div> <!-- end modal Login -->
+
+      <!-- MAIN PAGE -->
+
+      <div class='center quiet'>Map Canvas
+        <div id='map'></div>
+      </div>
+      <!-- Search Window - left side -->
+      <div id='search-window' class='col3 pad8y pad2x fill-lighten2 pin-left offcanvas-left animate slider'>
+        <div align='right'><a href='#' class='fill-darken2 pad1 space-top1 icon close'></a></div>
+        <div align='center'><h2>What to do...</h2></div>
+        <form id='search' enctype="multipart/formdata" accept-charset="utf-8" style='text-align: center'>
+          <br>
+          <input id ="keyword" type="text" name="keyword" value="" placeholder="Keyword">
+          <br>
+          <input id ="location" type="text" name="location" value="" placeholder="Location">
+          <br>
+          <input class='button' type="submit" value="Search">
+        </form>
+          <div id='search-results'>
+            <script id='search-result-template'type="text/x-handlebars-template">
+              <div>
+              <ul>
+                {{#each venues}}
+                <li><h5>{{name}}</h5>
+                <a href={{url}}>{{url}}</a></li>
+                {{/each}}
               </ul>
-            </li>
-            <li><a href='#search-window'>Search</a></li>
-            <li><a href='#list-window' id='show-list'>My Bucketlist</a></li>
-            <li><a href="#" id='current-user'>Logged in as</a></li>
-          </ul>
-        </div> <!-- end div id navbar -->
-      </div> <!-- end container -->
-    </nav> <!-- end Fixed navbar -->
-
-    <!-- Modal Registration -->
-    <div class="modal fade" id="regModal" role="dialog">
-      <div class="modal-dialog modal-sm">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h4 class="modal-title">Please register</h4>
+              </div>
+            </script>
           </div>
-          <div class="modal-body">
-            <p>
-              <label class="sr-only">Email address</label>
-              <input for="Email" type="text" id="regEmail" class="form-control" placeholder="email address" required autofocus>
-            <br>
-              <label for="regPassword" class="sr-only">Password</label>
-              <input type="text" id="regPassword" class="form-control" placeholder="password" required>
-              <input type="text" id="confirmPassword" class="form-control" placeholder="confirm password" required>
-            </p>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal" id="register">Register</button>
-          </div>
-          <div class="alert alert-danger fade in" id="regAlert">
-            <a href="#" class="close" data-dismiss="alert">&times;</a>
-            <strong>Registration unsuccessful</strong>
-          </div>
-        </div>
       </div>
-    </div> <!-- end Modal Registration -->
 
-
-    <!-- Modal Login -->
-    <div class="modal fade" id="logModal" role="dialog">
-      <div class="modal-dialog modal-sm">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h4 class="modal-title">Please sign in</h4>
-          </div>
-          <div class="modal-body">
-            <p>
-              <label class="sr-only">Email address</label>
-              <input for="Email" type="text" id="logEmail" class="form-control" placeholder="email address" required autofocus>
-            <br>
-              <label for="logPassword" class="sr-only">Password</label>
-              <input type="text" id="logPassword" class="form-control" placeholder="password" required>
-            </p>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal" id="login">Sign in</button>
-          </div>
-          <div class="alert alert-danger fade in" id="logAlert">
-            <a href="#" class="close" data-dismiss="alert">&times;</a>
-            <strong>Sign in unsuccessful</strong>
-          </div>
-        </div>
-      </div>
-    </div> <!-- end modal Login -->
-
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-
-<!-- MAIN PAGE -->
-
-  <div class='center quiet'>Map Canvas
-    <div id='map'></div>
-  </div>
-  <!-- Search Window - left side -->
-  <div id='search-window' class='col3 pad8y pad2x fill-lighten2 pin-left offcanvas-left animate slider'>
-    <div align='right'><a href='#' class='fill-darken2 pad1 space-top1 icon close'></a></div>
-    <div align='center'><h2>What to do...</h2></div>
-    <form id='search' enctype="multipart/formdata" accept-charset="utf-8" style='text-align: center'>
-      <br>
-      <input id ="keyword" type="text" name="keyword" value="" placeholder="Keyword">
-      <br>
-      <input id ="location" type="text" name="location" value="" placeholder="Location">
-      <br>
-      <input class='button' type="submit" value="Search">
-    </form>
-    <div id='search-results'>
-        <script id='search-result-template'type="text/x-handlebars-template">
+      <!-- List Window - right side  -->
+    <div id='list-window' class='col3 pad8y pad2x fill-lighten2 pin-right offcanvas-right animate slider'>
+      <div align='left'><a href='#' class='fill-darken2 pad1 space-top1 icon close'></a></div>
+      <div align='center'><h2>YOLO</h2></div>
+      <div id='list-results'>
+        <script id='list-template'type="text/x-handlebars-template">
           <div>
           <ul>
-            {{#each venues}}
-            <li><h5>{{name}}</h5>
-            <a href={{url}}>{{url}}</a></li>
+            {{#each list}}
+            <li><h5>Venue: {{venue}}</h5>
+            Note: {{note}}
             {{/each}}
           </ul>
           </div>
         </script>
       </div>
     </div>
-  </div>
 
-  <!-- List Window - right side  -->
-  <div id='list-window' class='col3 pad8y pad2x fill-lighten2 pin-right offcanvas-right animate slider'>
-  <div align='left'><a href='#' class='fill-darken2 pad1 space-top1 icon close'></a></div>
-  <div align='center'><h2>YOLO</h2></div>
-  <div id='list-results'>
-      <script id='list-template'type="text/x-handlebars-template">
-        <div>
-        <ul>
-          {{#each list}}
-          <li><h5>Venue: {{venue}}</h5>
-          Note: {{note}}
-          {{/each}}
-        </ul>
-        </div>
-      </script>
-    </div>
-  </div>
-</div>
+  </div>>
+
 
     <!-- Placed at the end of the document so the pages load faster -->
 
