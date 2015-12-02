@@ -62,8 +62,8 @@
           </div>
           <div class="modal-body">
             <p>
-              <label class="sr-only">Email address</label>
-              <input for="Email" type="text" id="regEmail" class="form-control" placeholder="email address" required autofocus>
+              <label class="sr-only">Username</label>
+              <input for="Username" type="text" id="regUsername" class="form-control" placeholder="username" required autofocus>
             <br>
               <label for="regPassword" class="sr-only">Password</label>
               <input type="text" id="regPassword" class="form-control" placeholder="password" required>
@@ -72,10 +72,6 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal" id="register">Register</button>
-          </div>
-          <div class="alert alert-danger fade in" id="regAlert">
-            <a href="#" class="close" data-dismiss="alert">&times;</a>
-            <strong>Registration unsuccessful</strong>
           </div>
         </div>
       </div>
@@ -92,8 +88,8 @@
           </div>
           <div class="modal-body">
             <p>
-              <label class="sr-only">Email address</label>
-              <input for="Email" type="text" id="logEmail" class="form-control" placeholder="email address" required autofocus>
+              <label class="sr-only">Username</label>
+              <input for="Username" type="text" id="logUsername" class="form-control" placeholder="username" required autofocus>
             <br>
               <label for="logPassword" class="sr-only">Password</label>
               <input type="text" id="logPassword" class="form-control" placeholder="password" required>
@@ -101,10 +97,6 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal" id="login">Sign in</button>
-          </div>
-          <div class="alert alert-danger fade in" id="logAlert">
-            <a href="#" class="close" data-dismiss="alert">&times;</a>
-            <strong>Sign in unsuccessful</strong>
           </div>
         </div>
       </div>
@@ -118,32 +110,64 @@
     <div class='center quiet'>Map Canvas
       <div id='map'></div>
     </div>
-  <div id='search-window' class='col3 pad8y pad2x fill-lighten2 pin-left offcanvas-left animate'>
-    <div align='right'><a href='#' class='fill-darken2 pad1 space-top1 icon close'></a></div>
-    <div align='center'><h2>What to do...</h2></div>
-    <form id='search' enctype="multipart/formdata" accept-charset="utf-8" style='text-align: center'>
-      <br>
-      <input id ="keyword" type="text" name="keyword" value="" placeholder="Keyword">
-      <br>
-      <input id ="location" type="text" name="location" value="" placeholder="Location">
-      <br>
-      <input class='button' type="submit" value="Search">
-    </form>
-    <div id='search-results'>
+
+    <div id='search-window' class='col3 pad8y pad2x fill-lighten2 pin-left offcanvas-left animate'>
+      <div align='right'>
+        <a href='#' class='fill-darken2 pad1 space-top1 icon close'></a>
+      </div>
+      <div align='center'>
+        <h2>What to do...</h2>
+      </div>
+      <form id='search' enctype="multipart/formdata" accept-charset="utf-8" style='text-align: center'>
+        <br>
+        <input id ="keyword" type="text" name="keyword" value="" placeholder="Keyword">
+        <br>
+        <input id ="location" type="text" name="location" value="" placeholder="Location">
+        <br>
+        <input class='button' type="submit" value="Search">
+      </form>
+      <div id='search-results'>
         <script id='search-result-template'type="text/x-handlebars-template">
           <div>
-          <ul>
-            {{#each venues}}
-            <li><h5>{{name}}</h5>
-            <a href={{url}}>{{url}}</a></li>
-            {{/each}}
-          </ul>
+            <ul class="recommendationList">
+              {{#each venues}}
+              <li class="card singleRecommendation hasPhoto" data-id={{data-id}}>
+                <div class="contentHolder">
+                  <div class="infoCol">
+                    <div class="venueBlock">
+                      <div class="venueDetails">
+                        <div class="venueName">
+                          <h3>
+                            <a href={{url}}>{{name}}</a>
+                          </h3>
+                        </div>
+                        <div class="venueMeta">
+                          <div class="venueScore positive" title="" style="background-color: #00B551;">{{rating}}</div>
+                          <div class="venueAddressData">
+                            <div class="venueAddress">{{location.address}}</div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="resultFooter">
+                      <div class="buttons">
+                        <div class="save-button inactive">
+                          <span class="icon"></span>
+                          <span class="label">Save</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              {{/each}}
+            </ul>
           </div>
         </script>
-      </div>
-    </div>
-  </div>
+      </div> <!-- end search results -->
+    </div> <!-- end search window -->
 
+<h5>{{name}}</h5><a href={{url}}>{{url}}</a>
 
     <!-- Placed at the end of the document so the pages load faster -->
 
