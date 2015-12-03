@@ -2,6 +2,9 @@
 var blapi = blapi || {};
 
 $(document).ready(function() {
+  $('#list-window').hide();
+  $('#current-user').hide();
+
   $('#search').on('submit', function(e){
     e.preventDefault();
     var searchParams = {    keyword: $('#keyword').val(),
@@ -23,10 +26,26 @@ $(document).ready(function() {
     }).fail(function(jqxhr) {
       console.error(jqxhr);
     });
+
+        // Map Search Geocode panning
+
+    var geocoder = L.mapbox.geocoder('mapbox.places');
+
+    geocoder.query($('#location').val(), showMap);
+
+    function showMap(err, data) {
+      if (data.lbounds) {
+        map.fitBounds(data.lbounds);
+      } else if (data.latlng) {
+        map.setView([data.latlng[0], data.latlng[1]], 16);
+      }
+    }
+
   });
 
   var searchResultTemplate = Handlebars.compile($('#search-result-template').html());
 
+  // L and map ARE defined in index.html
   var foursquarePlaces = L.layerGroup().addTo(map);
 
   var searchLayer = function(data) {
@@ -45,46 +64,61 @@ $(document).ready(function() {
   };
 
   // register user
-  $("#regAlert").hide();
-  $("#register").click(function(){
+  $('#register').click(function(){
     var credentials = {
-      username: $("#regEmail").val(),
-      password: $("#regPassword").val(),
-      password: $("#confirmPassword").val()
+      username: $('#regUsername').val(),
+      password: $('#regPassword').val(),
+      confirmpassword: $('#confirmPassword').val()
     };
     var cb = function() {
-
+    };
+    if (credentials.password !== credentials.confirmPassword) {
+      $('#regAlert').show();
+      return;
     }
     blapi.register(credentials, cb);
   });
 
   // login user
-  $("#logAlert").hide();
-  $("#login").click(function(){
+  $('#login').click(function(){
     var credentials = {
-      username: $("#logEmail").val(),
-      password: $("#logPassword").val()
+      username: $('#logUsername').val(),
+      password: $('#logPassword').val()
     };
-    var cb = function() {
-      $('#current-user').html($("#logEmail").val());
-      console.log($('#logEmail').val());
-    }
+    var cb = function(err) {
+      if (err){
+        console.error(err);
+      }
+      $('#current-user').html('Welcome, ' + $('#logUsername').val() + '!');
+      console.log($('#logUsername').val());
+      $('#list-window').show();
+      $('#current-user').show();
+    };
     blapi.login(credentials, cb);
   });
 
   // logout user
-  $("#logout").click(function(){
+  $('#logout').click(function(){
     var cb = function() {
-
     };
     blapi.logout(cb);
   });
 
-  $("#map").on('click', '.add-to-list', function(){
+
+  // Handlebars list click handlers and stuff
+  var refreshList = function(err, data){
+    if (err) {
+      console.error(err);
+    }
+    var listTemplateHTML = listTemplate({ list: data.list });
+    $('#list-results').html(listTemplateHTML);
+  };
+
+  $('#map').on('click', '.add-to-list', function(){
     var venue = {
       venue: $(this).attr('value')
     };
-    blapi.addToList(venue, function(err){
+    blapi.addToList(venue, function (err){
       if (err) {
         console.error(err);
       }
@@ -94,20 +128,19 @@ $(document).ready(function() {
 
   var listTemplate = Handlebars.compile($('#list-template').html());
 
-  var refreshList = function(err, data){
-    if (err) {
-      console.error(err);
-    }
-    var listTemplateHTML = listTemplate({ list: data.list });
-    $('#list-results').html(listTemplateHTML);
-  };
-
   $('#show-list').click(function(){
     blapi.showList(refreshList);
   });
 
-  // Note Patch Click Handler
+// Show Update Form
+  // $('#list-results').on('click', '.show-edit', function(e){
+  //   e.preventDefault();
+  //   var itemID = this.dataset.id;
+  //   console.log($('.patch-form').find('[data-id="' + itemID + '"]').css());
+  //   $('.patch-form').find("[data-id='" + itemID + "']").css('display:');
+  // });
 
+  // Note Patch Click Handler
   $('#list-results').on('submit', '.patch-form', function(e){
     e.preventDefault();
 
@@ -130,7 +163,6 @@ $(document).ready(function() {
   });
 
   // Delete Post
-
   $('#list-results').on('click', '.delete-item', function(e){
     e.preventDefault();
     var itemID = this.dataset.id;
@@ -146,4 +178,3 @@ $(document).ready(function() {
 
 
 });  // end document ready function
-
