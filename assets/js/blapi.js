@@ -2,7 +2,7 @@
 'use strict';
 
 var blapi = {
-  url: 'http://localhost:3000',
+  url: 'http://calm-oasis-5849.herokuapp.com',
 
   // boiler plate ajax callback wrapper
   ajax: function (config, cb) {
