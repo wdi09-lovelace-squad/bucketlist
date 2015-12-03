@@ -2,6 +2,9 @@
 var blapi = blapi || {};
 
 $(document).ready(function() {
+  $('#list-window').hide();
+  $('#current-user').hide();
+
   $('#search').on('submit', function(e){
     e.preventDefault();
     var searchParams = {    keyword: $('#keyword').val(),
@@ -54,6 +57,10 @@ $(document).ready(function() {
     };
     var cb = function() {
     };
+    if (credentials.password !== credentials.confirmPassword) {
+      alert('Password and confirmation do not match');
+      return;
+    }
     blapi.register(credentials, cb);
   });
 
@@ -66,6 +73,8 @@ $(document).ready(function() {
     var cb = function() {
       $('#current-user').html($('#logUsername').val());
       console.log($('#logUsername').val());
+      $('#list-window').hide();
+      $('#current-user').hide();
     };
     blapi.login(credentials, cb);
   });
