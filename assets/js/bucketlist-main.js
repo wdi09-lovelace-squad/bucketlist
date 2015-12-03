@@ -43,13 +43,25 @@ $(document).ready(function() {
           icon: L.mapbox.marker.icon({
             'marker-color': '#fd8b34',
             'marker-size': 'small'
-          })
+          }),
+          title: venue.id
         })
-      .bindPopup('<strong><a href="https://foursquare.com/v/' + venue.id + '">' + venue.name + '</a></strong><br>' + venue.categories[0].name + '<br><a href="#list-window"><button type="button" class="btn btn-default btn-xs add-to-list" value="' + venue.name + '""><i class="fa fa-bookmark fa-fw"></i> Add</button></a>')
+      .bindPopup('<div id=' + venue.id + '><strong><a href="https://foursquare.com/v/' + venue.id + '">' + venue.name + '</a></strong><br>' + venue.categories[0].name + '<br><a href="#list-window"><button type="button" class="btn btn-default btn-xs add-to-list" value="' + venue.name + '""><i class="fa fa-bookmark fa-fw"></i> Add</button></a></div>')
         .addTo(foursquarePlaces).addTo(zoomLayer);
     }
 
   };
+
+  // Hover handler for Search Results
+
+  $('#search-results').on('mouseover', '.list-result', function(){
+    var resultID = $(this).attr('value');
+    foursquarePlaces.eachLayer(function(marker) {
+      if (resultID === marker.options.title) {
+        marker.openPopup();
+      }
+    });
+  });
 
   // register user
   $('#register').click(function(){
