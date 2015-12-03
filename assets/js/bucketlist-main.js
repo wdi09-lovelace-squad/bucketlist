@@ -58,7 +58,7 @@ $(document).ready(function() {
     var cb = function() {
     };
     if (credentials.password !== credentials.confirmPassword) {
-      alert('Password and confirmation do not match');
+      $('#regAlert').show();
       return;
     }
     blapi.register(credentials, cb);
@@ -70,7 +70,11 @@ $(document).ready(function() {
       username: $('#logUsername').val(),
       password: $('#logPassword').val()
     };
-    var cb = function() {
+    var cb = function(err) {
+      if (err){
+        alert('Login failed');
+        return;
+      }
       $('#current-user').html($('#logUsername').val());
       console.log($('#logUsername').val());
       $('#list-window').hide();
