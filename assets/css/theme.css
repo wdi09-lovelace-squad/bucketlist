@@ -34,3 +34,7 @@ body {
 .slider {
   overflow: scroll;
 }
+
+.add-to-list:hover, .add-to-list:focus, .add-to-list:active, .add-to-list.active {
+  color: #fd8b34;
+}
