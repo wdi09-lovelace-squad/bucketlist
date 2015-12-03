@@ -171,10 +171,12 @@
                   </div>
                   <div class="userNote">
                     <p>Note: {{note}} <a href="#" class='show-edit-form' data-id={{_id}}><i class="fa fa-pencil fa-fw"></i></a></p>
+
                     <form class="patch-form" style="display: none" data-id={{_id}}>
-                        <input type="text" name="note" placeholder="What Do You Want to Do?"></input>
-                        <input type="submit" value="Submit"></input>
+                      <input type="text" class="form-control" name="note" placeholder="What Do You Want to Do?"></input>
+                      <input type="submit" value="Submit"></input>
                     </form>
+
                   </div>
                   <div class="userMark">
                     <p>
