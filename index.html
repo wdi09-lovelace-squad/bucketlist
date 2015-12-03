@@ -133,26 +133,24 @@
         <div id='search-results'>
           <script id='search-result-template'type="text/x-handlebars-template">
             <div>
-              <ul class="recommendationList">
+              <ul>
                 {{#each venues}}
-                <li class="card singleRecommendation hasPhoto" data-id={{data-id}}>
-                  <div class="contentHolder">
-                    <div class="infoCol">
-                      <div class="venueBlock">
-                        <div class="venueDetails">
-                          <div class="venueName">
-                            <h4><a href={{url}}>{{name}}</a></h4>
-                          </div>
-                          <div class="venueMeta">
-                            <div class="venueAddressData">
-                              <div class="venueAddress">{{location.address}}</div>
-                            </div>
-                          </div>
+                <li data-id={{data-id}}>
+                  <div name="list-item"
+                    <h4 class="fancy"><a href={{url}}>{{name}}</a></h4>
+                    <div name="category">
+                      Description: {{description}}
+                    </div>
+                    <div class="">
+                      <div class="venueAddressData">
+                        <div class="venueAddress">{{location.address}}<br>{{location.city}}, {{location.state}}
                         </div>
                       </div>
                     </div>
                   </div>
+                  <hr>
                 </li>
+
                 {{/each}}
               </ul>
             </div>
@@ -204,7 +202,7 @@
     var L;
     L.mapbox.accessToken = 'pk.eyJ1Ijoia2VsdmlubWEiLCJhIjoiY2loZjlubXVuMDRlNnRyajdvYWQyMm1oZiJ9.iXunWQwgDy-dDa919ydy1g';
     var map = L.mapbox.map('map', 'mapbox.streets', { zoomControl: false })
-        .setView([42.36, -71.08], 14);
+        .setView([42.36, -71.08], 13);
 
     new L.Control.Zoom({ position: 'bottomright' }).addTo(map);
     </script>
