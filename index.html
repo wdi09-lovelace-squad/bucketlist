@@ -7,8 +7,8 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="">
     <meta name="author" content="">
-    <title></title>
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <title>BucketList</title>
+    <!-- jQuery (for Bootstrap's JS plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!-- Bootstrap core CSS -->
     <link href="assets/css/bootstrap.min.css" rel="stylesheet">
@@ -16,179 +16,181 @@
     <link href="assets/css/bootstrap-theme.min.css" rel="stylesheet">
     <!-- Custom styles for this template -->
     <link href="assets/css/theme.css" rel="stylesheet">
+    <!-- Font Awesome! CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <!-- Mapbox Scripts and Styles -->
     <script src='https://api.mapbox.com/mapbox.js/v2.2.3/mapbox.js'></script>
     <link href='https://api.mapbox.com/mapbox.js/v2.2.3/mapbox.css' rel='stylesheet' />
-<!--     <link href='https://www.mapbox.com/base/latest/base.css' rel='stylesheet' /> -->
+    <!--     <link href='https://www.mapbox.com/base/latest/base.css' rel='stylesheet' /> -->
     <link href="assets/css/base.css" rel="stylesheet">
-
   </head>
 
   <body role="document">
   <div class='col12 main-window' >
-      <!-- Fixed navbar -->
-      <nav class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-          <div id="navbar" class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
-              <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">BucketList<span class="caret"></span></a>
-                <ul class="dropdown-menu">
-                  <li class="dropdown-header">Users</li>
-                  <li><a href="#" data-toggle="modal" data-target="#logModal">Login</a></li>
-                  <li><a href="#" id="logout">Logout</a></li>
-                  <li role="separator" class="divider"></li>
-            <!--  <li class="dropdown-header">Visitors</li> -->
-                  <li><a href="#" data-toggle="modal" data-target="#regModal">Register</a></li>
-            <!--  <li><a href="#">How the App works</a></li>
-                  <li><a href="#">About the Creator</a></li> -->
-                </ul>
-              </li>
-              <li><a href='#search-window'>Search</a></li>
-              <li><a href='#list-window' id='show-list'>My Bucketlist</a></li>
-              <li><a href="#" id='current-user'>Guest</a></li>
-            </ul>
-          </div> <!-- end div id navbar -->
-        </div> <!-- end container -->
-      </nav> <!-- end Fixed navbar -->
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">BucketList<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li class="dropdown-header">Users</li>
+                <li><a href="#" data-toggle="modal" data-target="#logModal">Login</a></li>
+                <li><a href="#" id="logout">Logout</a></li>
+                <li role="separator" class="divider"></li>
+          <!--  <li class="dropdown-header">Visitors</li> -->
+                <li><a href="#" data-toggle="modal" data-target="#regModal">Register</a></li>
+          <!--  <li><a href="#">How the App works</a></li>
+                <li><a href="#">About the Creator</a></li> -->
+              </ul>
+            </li>
+            <li><a href='#search-window'>Search</a></li>
+            <li><a href='#list-window' id='show-list'>My Bucketlist</a></li>
+            <li><a href="#" id='current-user'>Guest</a></li>
+          </ul>
+        </div> <!-- end div id navbar -->
+      </div> <!-- end container -->
+    </nav> <!-- end Fixed navbar -->
 
-      <!-- Modal Registration -->
-      <div class="modal fade" id="regModal" role="dialog">
-        <div class="modal-dialog modal-sm">
-          <div class="modal-content">
-            <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal">&times;</button>
-              <h4 class="modal-title">Please register</h4>
+    <!-- Modal Registration -->
+    <div class="modal fade" id="regModal" role="dialog">
+      <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Please register</h4>
+          </div>
+          <div class="modal-body">
+            <div class="input-group margin-bottom-sm">
+              <span class="input-group-addon"><i class="fa fa-user fa-fw"></i></span>
+              <input class="form-control" type="text" id="regUsername" placeholder="username" required autofocus>
             </div>
-            <div class="modal-body">
-              <p>
-                <label class="sr-only">Username</label>
-                <input for="Username" type="text" id="regUsername" class="form-control" placeholder="Username" required autofocus>
-              <br>
-                <label for="regPassword" class="sr-only">Password</label>
-                <input type="text" id="regPassword" class="form-control" placeholder="password" required>
-                <input type="text" id="confirmPassword" class="form-control" placeholder="confirm password" required>
-              </p>
+            <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-key fa-fw"></i></span>
+              <input class="form-control" type="password" id="regPassword" placeholder="password" required>
             </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-default" data-dismiss="modal" id="register">Register</button>
+            <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-key fa-fw"></i></span>
+              <input class="form-control" type="password" id="confirmPassword" placeholder="confirm password" required>
             </div>
           </div>
-        </div>
-      </div> <!-- end Modal Registration -->
-
-
-      <!-- Modal Login -->
-      <div class="modal fade" id="logModal" role="dialog">
-        <div class="modal-dialog modal-sm">
-          <div class="modal-content">
-            <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal">&times;</button>
-              <h4 class="modal-title">Please sign in</h4>
-            </div>
-            <div class="modal-body">
-              <p>
-                <label class="sr-only">Username</label>
-                <input for="Username" type="text" id="logUsername" class="form-control" placeholder="Username" required autofocus>
-              <br>
-                <label for="logPassword" class="sr-only">Password</label>
-                <input type="text" id="logPassword" class="form-control" placeholder="password" required>
-              </p>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-default" data-dismiss="modal" id="login">Sign in</button>
-            </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal" id="register">Register</button>
           </div>
         </div>
-      </div> <!-- end modal Login -->
-
-      <!-- MAIN PAGE -->
-
-      <div class='center quiet'>Map Canvas
-        <div id='map'></div>
       </div>
-      <!-- Search Window - left side -->
-      <div id='search-window' class='col3 pad8y pad2x fill-lighten2 pin-left offcanvas-left animate slider'>
-        <div align='right'><a href='#' class='fill-darken2 pad1 space-top1 icon close'></a></div>
-        <div align='center'><h2>What to do...</h2></div>
-        <form id='search' enctype="multipart/formdata" accept-charset="utf-8" style='text-align: center'>
-          <br>
-          <input id ="keyword" type="text" name="keyword" value="" placeholder="Keyword">
-          <br>
-          <input id ="location" type="text" name="location" value="" placeholder="Location">
-          <br>
-          <input class='button' type="submit" value="Search">
-        </form>
-          <div id='search-results'>
-            <script id='search-result-template'type="text/x-handlebars-template">
-              <div>
-                <ul class="recommendationList">
-                  {{#each venues}}
-                  <li class="card singleRecommendation hasPhoto" data-id={{data-id}}>
-                    <div class="contentHolder">
-                      <div class="infoCol">
-                        <div class="venueBlock">
-                          <div class="venueDetails">
-                            <div class="venueName">
-                              <h3>
-                                <a href={{url}}>{{name}}</a>
-                              </h3>
-                            </div>
-                            <div class="venueMeta">
-                              <div class="venueScore positive" title="" style="background-color: #00B551;">{{rating}}</div>
-                              <div class="venueAddressData">
-                                <div class="venueAddress">{{location.address}}</div>
-                              </div>
-                            </div>
+    </div> <!-- end Modal Registration -->
+
+    <!-- Modal Login -->
+    <div class="modal fade" id="logModal" role="dialog">
+      <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Please sign in</h4>
+          </div>
+          <div class="modal-body">
+            <div class="input-group margin-bottom-sm">
+              <span class="input-group-addon"><i class="fa fa-user fa-fw"></i></span>
+              <input class="form-control" type="text" id="logUsername" placeholder="username" required autofocus>
+            </div>
+            <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-key fa-fw"></i></span>
+              <input class="form-control" type="password" id="logPassword" placeholder="password" required>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal" id="login">Sign in</button>
+          </div>
+        </div>
+      </div>
+    </div> <!-- end modal Login -->
+
+    <!-- MAIN PAGE -->
+    <div class='center quiet'>Map Canvas
+      <div id='map'></div>
+    </div>
+
+    <!-- Search Window - left side -->
+    <div id='search-window' class='col3 pad8y pad2x fill-lighten2 pin-left offcanvas-left animate slider'>
+      <div align='right'><a href='#' class='close'><i class="fa fa-times"></i></a></div>
+      <div align='center'><h3>What to do...</h3></div>
+      <form id='search' enctype="multipart/formdata" accept-charset="utf-8" style='text-align: center'>
+        <br>
+        <input id ="keyword" type="text" name="keyword" value="" placeholder="Keyword">
+        <br>
+        <input id ="location" type="text" name="location" value="" placeholder="Location">
+        <br>
+        <input class='button' type="submit" value="Search">
+      </form>
+        <div id='search-results'>
+          <script id='search-result-template'type="text/x-handlebars-template">
+            <div>
+              <ul class="recommendationList">
+                {{#each venues}}
+                <li class="card singleRecommendation hasPhoto" data-id={{data-id}}>
+                  <div class="contentHolder">
+                    <div class="infoCol">
+                      <div class="venueBlock">
+                        <div class="venueDetails">
+                          <div class="venueName">
+                            <h4><a href={{url}}>{{name}}</a></h4>
                           </div>
-                        </div>
-                        <div class="resultFooter">
-                          <div class="buttons">
-                            <div class="save-button inactive">
-                              <span class="icon"></span>
-                              <span class="label">Save</span>
+                          <div class="venueMeta">
+                            <div class="venueAddressData">
+                              <div class="venueAddress">{{location.address}}</div>
                             </div>
                           </div>
                         </div>
                       </div>
                     </div>
-                  </li>
-                  {{/each}}
-                </ul>
-              </div>
-            </script>
-          </div> <!-- end search results -->
-      </div> <!-- end search window -->
+                  </div>
+                </li>
+                {{/each}}
+              </ul>
+            </div>
+          </script>
+        </div> <!-- end search results -->
+    </div> <!-- end search window -->
 
-      <!-- List Window - right side  -->
+    <!-- List Window - right side  -->
     <div id='list-window' class='col4 pad8y pad2x fill-lighten2 pin-right offcanvas-right animate slider'>
-      <div align='left'><a href='#' class='fill-darken2 pad1 space-top1 icon close'></a></div>
-      <div align='center'><h2>YOLO</h2></div>
+      <div align='left'><a href='#' class='close'><i class="fa fa-times"></i></a></div>
+      <div align='center'><h3>You Only List Once</h3></div>
       <div id='list-results'>
-        <script id='list-template'type="text/x-handlebars-template">
-          <div>
-          <ul>
+      <script id='list-template'type="text/x-handlebars-template">
+        <div>
+          <ul class="userList">
             {{#each list}}
-            <li><h5>Venue: {{venue}}</h5>
-            Note: {{note}}
-            <form class="patch-form" style="display:" data-id={{_id}}>
-              <input type="text" name="note" placeholder="What Do You Want to Do?"></input>
-              <input type="submit" value="Submit"></input>
-            </form>
-            <button class='delete-item glyphicon glyphicon-remove' data-id={{_id}}>
-            </li>
+              <li class="card singleListItem" data-id={{data-id}}>
+                <div class="contentHolderList">
+                  <div class="venueName">
+                    <h5><span class="lead">{{venue}}</span> <a href="#" class='delete-item' data-id={{_id}}><i class="fa fa-trash fa-fw"></i></a></h5>
+                  </div>
+                  <div class="userNote">
+                    <p>Note: {{note}} <a href="#" class='show-edit-form' data-id={{_id}}><i class="fa fa-pencil fa-fw"></i></a></p>
+                    <form class="patch-form" style="display: none" data-id={{_id}}>
+                        <input type="text" name="note" placeholder="What Do You Want to Do?"></input>
+                        <input type="submit" value="Submit"></input>
+                    </form>
+                  </div>
+                  <div class="userMark">
+                    <p>
+                      <a href="#" class='star-item' data-id={{_id}}><i class="fa fa-star fa-fw"></i></a>
+                      Completed
+                    </p>
+                  </div>
+                </div>
+              </li>
             {{/each}}
           </ul>
-          </div>
-        </script>
-      </div>
-    </div>
-
-  </div>>
-
+        </div>
+      </script>
+      </div> <!-- end list results -->
+    </div> <!-- end list window -->
 
     <!-- Placed at the end of the document so the pages load faster -->
-
 
     <!-- Invoking Mapbox API -->
     <script>
@@ -200,7 +202,6 @@
 
     new L.Control.Zoom({ position: 'bottomright' }).addTo(map);
     </script>
-
     <script src="assets/js/bootstrap.min.js"></script>
     <script src="./assets/js/handlebars-v3.0.3.js"></script>
     <script src="./assets/js/blapi.js" type="text/javascript" charset="utf-8"></script>
