@@ -78,6 +78,7 @@ var blapi = {
       method: 'DELETE',
       data: item,
       url: this.url + '/doStuff',
+      xhrFields: { withCredentials: true }, // tells jquery to use cookies
       dataType: 'json'
     }, callback);
   }

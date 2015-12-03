@@ -114,6 +114,7 @@ $(document).ready(function() {
     $('#list-results').html(listTemplateHTML);
   };
 
+  // add to list from map pin
   $('#map').on('click', '.add-to-list', function(){
     var venue = {
       venue: $(this).attr('value')
@@ -128,17 +129,17 @@ $(document).ready(function() {
 
   var listTemplate = Handlebars.compile($('#list-template').html());
 
+  // list will refresh and open when you click in nav bar
   $('#show-list').click(function(){
     blapi.showList(refreshList);
   });
 
-// Show Update Form
-  // $('#list-results').on('click', '.show-edit', function(e){
-  //   e.preventDefault();
-  //   var itemID = this.dataset.id;
-  //   console.log($('.patch-form').find('[data-id="' + itemID + '"]').css());
-  //   $('.patch-form').find("[data-id='" + itemID + "']").css('display:');
-  // });
+  // click on pencil will show update form
+  $('#list-results').on('click', '.show-edit-form', function(e){
+    e.preventDefault();
+    var itemID = this.dataset.id;
+    $('#list-results').on('.patch-form').find("[data-id='" + itemID + "']").css({'display':'block'});
+  });
 
   // Note Patch Click Handler
   $('#list-results').on('submit', '.patch-form', function(e){
