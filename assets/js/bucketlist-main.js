@@ -2,8 +2,7 @@
 var blapi = blapi || {};
 
 $(document).ready(function() {
-  $('#list-window').hide();
-  $('#current-user').hide();
+  $('#show-list').hide();
 
   $('#search').on('submit', function(e){
     e.preventDefault();
@@ -88,11 +87,12 @@ $(document).ready(function() {
     var cb = function(err) {
       if (err){
         console.error(err);
+        alert('Login Failed');
+        return;
       }
-      $('#current-user').html('Welcome, ' + $('#logUsername').val() + '!');
+      $('#current-user').html('Welcome, ' + $('#logUsername').val() + '! <span class="caret"></span>');
       console.log($('#logUsername').val());
-      $('#list-window').show();
-      $('#current-user').show();
+      $('#show-list').show();
     };
     blapi.login(credentials, cb);
   });
