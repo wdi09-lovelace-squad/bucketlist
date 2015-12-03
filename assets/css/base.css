@@ -950,7 +950,7 @@ input[type=date],
 input[type=email],
 input[type=number] {
   display:inline-block;
-  height:40px;
+  /*height:40px;*/
   margin:0;
   color:rgba(0,0,0,.5);
   padding:10px;

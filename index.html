@@ -121,7 +121,7 @@
     </div>
 
     <!-- Search Window - left side -->
-    <div id='search-window' class='col3 pad8y pad2x fill-lighten2 pin-left offcanvas-left animate slider'>
+    <div id='search-window' class='col3 pad8y pad2x fill-lighten3 pin-left offcanvas-left animate slider'>
       <div align='right'><a href='#' class='close'><i class="fa fa-times"></i></a></div>
       <form id='search' enctype="multipart/formdata" accept-charset="utf-8" style='text-align: center'>
         <br>
@@ -131,22 +131,19 @@
         <input class='button short' type="submit" value="Search">
       </form>
         <div id='search-results'>
-          <script id='search-result-template'type="text/x-handlebars-template">
+          <script id='search-result-template' type="text/x-handlebars-template">
             <div>
               <ul>
                 {{#each venues}}
-                <li data-id={{data-id}}>
-                  <div name="list-item"
-                    <h4 class="fancy"><a href={{url}}>{{name}}</a></h4>
-                    <div name="category">
-                      Description: {{description}}
-                    </div>
-                    <div class="">
+                <li>
+                  <div class="list-result" value={{id}}>
+                    <a href={{url}}><h4 class="fancy">{{name}}</h4></a>
+                      <div name="category">
+                      </div>
                       <div class="venueAddressData">
                         <div class="venueAddress">{{location.address}}<br>{{location.city}}, {{location.state}}
                         </div>
                       </div>
-                    </div>
                   </div>
                   <hr>
                 </li>
@@ -159,7 +156,7 @@
     </div> <!-- end search window -->
 
     <!-- List Window - right side  -->
-    <div id='list-window' class='col4 pad8y pad2x fill-lighten2 pin-right offcanvas-right animate slider'>
+    <div id='list-window' class='col4 pad8y pad2x fill-lighten3 pin-right offcanvas-right animate slider'>
       <div align='left'><a href='#' class='close'><i class="fa fa-times"></i></a></div>
       <div align='center'><h3 class="fancy">You Only List Once</h3></div>
       <div id='list-results'>
