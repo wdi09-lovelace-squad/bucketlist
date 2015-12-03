@@ -18,27 +18,14 @@ $(document).ready(function() {
       dataType: 'json'
     }).done(function(data){
       foursquarePlaces.clearLayers();
-      console.log(data.response);
+      zoomLayer.clearLayers();
       var searchResultHTML = searchResultTemplate(data.response);
       $('#search-results').html(searchResultHTML);
       searchLayer(data);
+      map.fitBounds(zoomLayer.getBounds());
     }).fail(function(jqxhr) {
       console.error(jqxhr);
     });
-
-        // Map Search Geocode panning
-
-    var geocoder = L.mapbox.geocoder('mapbox.places');
-
-    geocoder.query($('#location').val(), showMap);
-
-    function showMap(err, data) {
-      if (data.lbounds) {
-        map.fitBounds(data.lbounds);
-      } else if (data.latlng) {
-        map.setView([data.latlng[0], data.latlng[1]], 16);
-      }
-    }
 
   });
 
@@ -46,6 +33,7 @@ $(document).ready(function() {
 
   // L and map ARE defined in index.html
   var foursquarePlaces = L.layerGroup().addTo(map);
+  var zoomLayer = L.featureGroup();
 
   var searchLayer = function(data) {
     for (var i = 0; i < data.response.venues.length; i++) {
@@ -58,8 +46,9 @@ $(document).ready(function() {
           })
         })
       .bindPopup('<strong><a href="https://foursquare.com/v/' + venue.id + '">' + venue.name + '</a></strong><br>' + venue.categories[0].name + '<br><a href="#list-window"><button type="button" class="btn btn-default btn-xs add-to-list" value="' + venue.name + '""><i class="fa fa-bookmark fa-fw"></i> Add</button></a>')
-        .addTo(foursquarePlaces);
+        .addTo(foursquarePlaces).addTo(zoomLayer);
     }
+
   };
 
   // register user
