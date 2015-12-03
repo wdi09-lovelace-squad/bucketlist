@@ -103,8 +103,8 @@ $(document).ready(function() {
       if (err){
         console.error(err);
       }
-      $('#list-window').hide();
-      $('#current-user').hide();
+      $('#current-user').html('Login/Register<span class="caret"></span>');
+      $('#show-list').hide();
     };
     blapi.logout(cb);
   });
