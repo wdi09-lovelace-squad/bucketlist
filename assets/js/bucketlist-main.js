@@ -58,7 +58,7 @@ $(document).ready(function() {
             'marker-size': 'small'
           })
         })
-      .bindPopup('<strong><a href="https://foursquare.com/v/' + venue.id + '">' + venue.name + '</a></strong><br>' + venue.categories[0].name + '<br><a href="#list-window"><button type="button" class="btn-xs add-to-list" value="' + venue.name + '"">Add To List</button></a>')
+      .bindPopup('<strong><a href="https://foursquare.com/v/' + venue.id + '">' + venue.name + '</a></strong><br>' + venue.categories[0].name + '<br><a href="#list-window"><button type="button" class="btn btn-default btn-xs add-to-list" value="' + venue.name + '""><i class="fa fa-bookmark fa-fw"></i> Add</button></a>')
         .addTo(foursquarePlaces);
     }
   };
