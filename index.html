@@ -121,14 +121,14 @@
     </div>
 
     <!-- Search Window - left side -->
-    <div id='search-window' class='col3 pad8y pad2x fill-lighten3 pin-left offcanvas-left animate slider'>
-      <div align='right'><a href='#' class='close'><i class="fa fa-times"></i></a></div>
+    <div id='search-window' class='col4 pad8y pad2x fill-lighten3 pin-left offcanvas-left animate slider'>
+      <div align='right'><a href='#' class='close pad1y'><i class="fa fa-times"></i></a></div>
       <form id='search' enctype="multipart/formdata" accept-charset="utf-8" style='text-align: center'>
         <br>
-        <input class="form-control input-sm" id="keyword" type="text" name="keyword" value="" placeholder="Keyword">
-        <input class="form-control input-sm" id="location" type="text" name="location" value="" placeholder="City + State or ZIP">
+        <input class="form-control input-sm" id="keyword" type="text" name="keyword" value="" placeholder="Keyword" style="margin-bottom: 5px">
+        <input class="form-control input-sm" id="location" type="text" name="location" value="" placeholder="City + State or ZIP" style="margin-bottom: 10px">
         <br>
-        <input class='button short' type="submit" value="Search">
+        <input class='button short' type="submit" value="Search" style="width: 100px">
       </form>
         <div id='search-results'>
           <script id='search-result-template' type="text/x-handlebars-template">
@@ -156,9 +156,9 @@
     </div> <!-- end search window -->
 
     <!-- List Window - right side  -->
-    <div id='list-window' class='col4 pad8y pad2x fill-lighten3 pin-right offcanvas-right animate slider'>
-      <div align='left'><a href='#' class='close'><i class="fa fa-times"></i></a></div>
-      <div align='center'><h3 class="fancy">You Only List Once</h3></div>
+    <div id='list-window' class='col4 pad8y pad2x fill-lighten3 pin-left offcanvas-left animate slider'>
+      <div align='right'><a href='#' class='close'><i class="fa fa-times"></i></a></div>
+      <div align='center'><h3 class="fancy">My List</h3></div>
       <div id='list-results'>
       <script id='list-template'type="text/x-handlebars-template">
         <div>
@@ -167,23 +167,23 @@
               <li class="card singleListItem" data-id={{data-id}}>
                 <div class="contentHolderList">
                   <div class="venueName">
-                    <h5><span class="lead">{{venue}}</span> <a href="#" class='delete-item' data-id={{_id}}><i class="fa fa-trash fa-fw"></i></a></h5>
+                    <h5><a href="#" class='delete-item' data-id={{_id}}><i class="fa fa-trash fa-fw"></i></a><span class="lead">{{venue}}</span></h5>
                   </div>
                   <div class="userNote">
-                    <p>Note: {{note}} <a href="#" class='show-edit-form' data-id={{_id}}><i class="fa fa-pencil fa-fw"></i></a></p>
+                    <a href="#" class='show-edit-form' data-id={{_id}}><i class="fa fa-pencil fa-fw"></i></a>Note: {{note}}<br>
+
                     <form class="patch-form" style="display: none" data-id={{_id}}>
-                        <input type="text" name="note" placeholder="What Do You Want to Do?"></input>
-                        <input type="submit" value="Submit"></input>
+                      <input type="text" class="form-control input-sm" name="note" placeholder="What Do You Want to Do?"></input>
+                      <input class='btn btn-default btn-xs' type="submit" value="Submit" style="width:100px"></input>
+                      <a href='#' id='show-list'>
+                      <input class='btn btn-default btn-xs' style="width:100px" value="Cancel"></input></a>
                     </form>
-                  </div>
-                  <div class="userMark">
-                    <p>
-                      <a href="#" class='star-item' data-id={{_id}}><i class="fa fa-star fa-fw"></i></a>
-                      Completed
-                    </p>
+
                   </div>
                 </div>
               </li>
+              <br>
+              <hr>
             {{/each}}
           </ul>
         </div>

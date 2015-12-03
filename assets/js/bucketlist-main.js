@@ -46,7 +46,7 @@ $(document).ready(function() {
           }),
           title: venue.id
         })
-      .bindPopup('<div id=' + venue.id + '><strong><a href="https://foursquare.com/v/' + venue.id + '">' + venue.name + '</a></strong><br>' + venue.categories[0].name + '<br><a href="#list-window"><button type="button" class="btn btn-default btn-xs add-to-list" value="' + venue.name + '""><i class="fa fa-bookmark fa-fw"></i> Add</button></a></div>')
+      .bindPopup('<div id=' + venue.id + '><strong><a href="https://foursquare.com/v/' + venue.id + '">' + venue.name + '</a></strong><br>' + venue.categories[0].name + '<br><a href="#list-window"><button type="button" class="btn btn-default btn-xs add-to-list" value="' + venue.name + '""><i class="fa fa-plus fa-fw"></i> Add</button></a></div>')
         .addTo(foursquarePlaces).addTo(zoomLayer);
     }
 
@@ -136,7 +136,7 @@ $(document).ready(function() {
   var listTemplate = Handlebars.compile($('#list-template').html());
 
   // list will refresh and open when you click in nav bar
-  $('#show-list').click(function(){
+  $('#show-list').on('click', function(){
     blapi.showList(refreshList);
   });
 
@@ -144,7 +144,7 @@ $(document).ready(function() {
   $('#list-results').on('click', '.show-edit-form', function(e){
     e.preventDefault();
     var itemID = this.dataset.id;
-    $('#list-results').on('.patch-form').find("[data-id='" + itemID + "']").css({'display':'block'});
+    $('#list-results').on('.patch-form').find("[data-id='" + itemID + "']").toggle();
   });
 
   // Note Patch Click Handler
