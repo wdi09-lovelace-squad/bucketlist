@@ -87,13 +87,12 @@ $(document).ready(function() {
     };
     var cb = function(err) {
       if (err){
-        alert('Login failed');
-        return;
+        console.error(err);
       }
-      $('#current-user').html($('#logUsername').val());
+      $('#current-user').html('Welcome, ' + $('#logUsername').val() + '!');
       console.log($('#logUsername').val());
-      $('#list-window').hide();
-      $('#current-user').hide();
+      $('#list-window').show();
+      $('#current-user').show();
     };
     blapi.login(credentials, cb);
   });
