@@ -99,7 +99,12 @@ $(document).ready(function() {
 
   // logout user
   $('#logout').click(function(){
-    var cb = function() {
+    var cb = function(err) {
+      if (err){
+        console.error(err);
+      }
+      $('#list-window').hide();
+      $('#current-user').hide();
     };
     blapi.logout(cb);
   });
