@@ -10,7 +10,7 @@ $(document).ready(function() {
                             location: $('#location').val()
                       };
     $.ajax({
-      url: 'http://localhost:3000/venues',
+      url: 'http://calm-oasis-5849.herokuapp.com/venues',
       method: 'POST',
       contentType: 'application/json; charset=utf-8',
       processData: false,
