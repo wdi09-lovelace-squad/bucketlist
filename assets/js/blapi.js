@@ -19,7 +19,6 @@ var blapi = {
       url: this.url + '/signup',
       contentType: 'application/json; charset=utf-8',
       data: JSON.stringify(credentials),
-      dataType: 'json'
     }, callback);
   },
 

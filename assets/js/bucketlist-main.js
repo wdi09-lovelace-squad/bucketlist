@@ -70,14 +70,29 @@ $(document).ready(function() {
       password: $('#regPassword').val(),
       confirmpassword: $('#confirmPassword').val()
     };
-    var cb = function() {
-    };
-    if (credentials.password !== credentials.confirmPassword) {
-      $('#regAlert').show();
+    if (credentials.password !== credentials.confirmpassword) {
+      alert('Registration Failed!');
       return;
-    }
-    blapi.register(credentials, cb);
+    } alert('Registration Successful! Standby for autologin...');
+    blapi.register(credentials, function(err) {
+      if (err) {
+        console.error(err);
+      }
+      //auto login on successful registration
+    var regCb = function(err) {
+      if (err){
+        console.error(err);
+        alert('Login Failed');
+        return;
+      }
+      $('#current-user').html('Welcome, ' + $('#regUsername').val() + '! <span class="caret"></span>');
+      $('#show-list').show();
+    };
+
+      blapi.login(credentials, regCb);
+    });
   });
+
 
   // login user
   $('#login').click(function(){
@@ -85,7 +100,7 @@ $(document).ready(function() {
       username: $('#logUsername').val(),
       password: $('#logPassword').val()
     };
-    var cb = function(err) {
+    var loginCb = function(err) {
       if (err){
         console.error(err);
         alert('Login Failed');
@@ -95,7 +110,7 @@ $(document).ready(function() {
       console.log($('#logUsername').val());
       $('#show-list').show();
     };
-    blapi.login(credentials, cb);
+    blapi.login(credentials, loginCb);
   });
 
   // logout user
