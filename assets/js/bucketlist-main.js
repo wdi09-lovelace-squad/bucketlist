@@ -104,6 +104,10 @@ $(document).ready(function() {
     blapi.logout(cb);
   });
 
+
+  // Handlebars list click handlers and stuff
+  var listTemplate = Handlebars.compile($('#list-template').html());
+
   var refreshList = function(err, data){
     if (err) {
       console.error(err);
@@ -124,7 +128,7 @@ $(document).ready(function() {
     });
   });
 
-  var listTemplate = Handlebars.compile($('#list-template').html());
+
 
   $('#show-list').click(function(){
     blapi.showList(refreshList);

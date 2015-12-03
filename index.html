@@ -166,21 +166,17 @@
 
     <!-- List Window - right side  -->
     <div id='list-window' class='col4 pad8y pad2x fill-lighten2 pin-right offcanvas-right animate slider'>
-      <div align='left'>
-        <a href='#' class='fill-darken2 pad1 space-top1 icon close'></a>
-      </div>
-      <div align='center'>
-        <h2>YOLO</h2>
-      </div>
+      <div align='left'><a href='#' class='close'><i class="fa fa-times"></i></a></div>
+      <div align='center'><h2>You Only List Once</h2></div>
       <div id='list-results'>
-        <script id='list-template'type="text/x-handlebars-template">
+      <script id='list-template'type="text/x-handlebars-template">
         <div>
           <ul class="userList">
             {{#each list}}
               <li class="card singleListItem" data-id={{data-id}}>
                 <div class="contentHolderList">
                   <div class="venueName">
-                    <h5>Venue: {{venue}} <a href="#" class='delete-item' data-id={{_id}}><i class="fa fa-trash fa-fw"></i></a></h5>
+                    <h5><span class="lead">{{venue}}</span> <a href="#" class='delete-item' data-id={{_id}}><i class="fa fa-trash fa-fw"></i></a></h5>
                   </div>
                   <div class="userNote">
                     <p>Note: {{note}} <a href="#" class='show-edit-form' data-id={{_id}}><i class="fa fa-pencil fa-fw"></i></a></p>
@@ -200,7 +196,7 @@
             {{/each}}
           </ul>
         </div>
-        </script>
+      </script>
       </div> <!-- end list results -->
     </div> <!-- end list window -->
 
