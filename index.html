@@ -123,14 +123,12 @@
     <!-- Search Window - left side -->
     <div id='search-window' class='col3 pad8y pad2x fill-lighten2 pin-left offcanvas-left animate slider'>
       <div align='right'><a href='#' class='close'><i class="fa fa-times"></i></a></div>
-      <div align='center'><h3 class="fancy">What to do...</h3></div>
       <form id='search' enctype="multipart/formdata" accept-charset="utf-8" style='text-align: center'>
         <br>
-        <input id ="keyword" type="text" name="keyword" value="" placeholder="Keyword">
+        <input class="form-control input-sm" id="keyword" type="text" name="keyword" value="" placeholder="Keyword">
+        <input class="form-control input-sm" id="location" type="text" name="location" value="" placeholder="City + State or ZIP">
         <br>
-        <input id ="location" type="text" name="location" value="" placeholder="Location">
-        <br>
-        <input class='button' type="submit" value="Search">
+        <input class='button short' type="submit" value="Search">
       </form>
         <div id='search-results'>
           <script id='search-result-template'type="text/x-handlebars-template">
