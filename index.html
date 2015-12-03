@@ -114,7 +114,7 @@
 
     <!-- Search Window - left side -->
     <div id='search-window' class='col3 pad8y pad2x fill-lighten2 pin-left offcanvas-left animate slider'>
-      <div align='right'><a href='#' class='fill-darken2 pad1 space-top1 icon close'></a></div>
+      <div align='right'><a href='#' class='close'><i class="fa fa-times"></i></a></div>
       <div align='center'><h3>What to do...</h3></div>
       <form id='search' enctype="multipart/formdata" accept-charset="utf-8" style='text-align: center'>
         <br>
@@ -135,9 +135,7 @@
                       <div class="venueBlock">
                         <div class="venueDetails">
                           <div class="venueName">
-                            <h3>
-                              <a href={{url}}>{{name}}</a>
-                            </h3>
+                            <h4><a href={{url}}>{{name}}</a></h4>
                           </div>
                           <div class="venueMeta">
                             <div class="venueAddressData">
@@ -146,13 +144,8 @@
                           </div>
                         </div>
                       </div>
-                      <div class="resultFooter">
-                        <div class="buttons">
-                          <div class="save-button inactive">
-                            <span class="icon"></span>
-                            <span class="label">Save</span>
-                          </div>
-                        </div>
+                      <div class="save-button">
+                      <a href="#" class='mark-item' data-id={{_id}}><i class="fa fa-bookmark fa-fw"></i> Save</a>
                       </div>
                     </div>
                   </div>
