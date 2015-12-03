@@ -29,8 +29,8 @@ var blapi = {
       url: this.url + '/login',
       contentType: 'application/json; charset=utf-8',
       data: JSON.stringify(credentials),
-      xhrFields: { withCredentials: true }, // tells jquery to use cookies
-      dataType: 'json'
+      xhrFields: { withCredentials: true } // tells jquery to use cookies
+      // dataType: 'json'
     }, callback);
   },
 
