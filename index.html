@@ -30,24 +30,32 @@
     <!-- Fixed navbar -->
     <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand page-scroll" href="#">
+          <img src="assets/images/bucketlist.png" class="img-responsive" alt="" height="25" width="232">
+          </a>
+        </div>
+
         <div id="navbar" class="navbar-collapse collapse">
-          <ul class="nav navbar-nav">
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">BucketList<span class="caret"></span></a>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href='#search-window'>Search</a></li>
+            <li><a href='#list-window' id='show-list'>My Bucketlist</a></li>
+              <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" id='current-user'>Login/Register<span class="caret"></span></a>
               <ul class="dropdown-menu">
                 <li class="dropdown-header">Users</li>
                 <li><a href="#" data-toggle="modal" data-target="#logModal">Login</a></li>
                 <li><a href="#" id="logout">Logout</a></li>
                 <li role="separator" class="divider"></li>
-          <!--  <li class="dropdown-header">Visitors</li> -->
                 <li><a href="#" data-toggle="modal" data-target="#regModal">Register</a></li>
-          <!--  <li><a href="#">How the App works</a></li>
-                <li><a href="#">About the Creator</a></li> -->
               </ul>
             </li>
-            <li><a href='#search-window'>Search</a></li>
-            <li><a href='#list-window' id='show-list'>My Bucketlist</a></li>
-            <li><a href="#" id='current-user'>Guest</a></li>
           </ul>
         </div> <!-- end div id navbar -->
       </div> <!-- end container -->
@@ -115,7 +123,7 @@
     <!-- Search Window - left side -->
     <div id='search-window' class='col3 pad8y pad2x fill-lighten2 pin-left offcanvas-left animate slider'>
       <div align='right'><a href='#' class='close'><i class="fa fa-times"></i></a></div>
-      <div align='center'><h3>What to do...</h3></div>
+      <div align='center'><h3 class="fancy">What to do...</h3></div>
       <form id='search' enctype="multipart/formdata" accept-charset="utf-8" style='text-align: center'>
         <br>
         <input id ="keyword" type="text" name="keyword" value="" placeholder="Keyword">
@@ -157,7 +165,7 @@
     <!-- List Window - right side  -->
     <div id='list-window' class='col4 pad8y pad2x fill-lighten2 pin-right offcanvas-right animate slider'>
       <div align='left'><a href='#' class='close'><i class="fa fa-times"></i></a></div>
-      <div align='center'><h3>You Only List Once</h3></div>
+      <div align='center'><h3 class="fancy">You Only List Once</h3></div>
       <div id='list-results'>
       <script id='list-template'type="text/x-handlebars-template">
         <div>
