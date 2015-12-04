@@ -5,6 +5,8 @@ $(document).ready(function() {
   $('#show-list').hide();
   $('#logAlert').hide();
   $('#regAlert').hide();
+  $('#logProgress').hide();
+  $('#regProgress').hide();
 
   $('#search').on('submit', function(e){
     e.preventDefault();
@@ -76,6 +78,7 @@ $(document).ready(function() {
       $('#regAlert').show();
       return;
     } $('#current-user').html('Logging in...');
+      $('#regProgress').show();
     blapi.register(credentials, function(err) {
       if (err) {
         console.error(err);
@@ -87,6 +90,7 @@ $(document).ready(function() {
         $('#current-user').html('Login/Register<span class="caret"></span>');
         return;
       } $('#regModal').modal('hide');
+        $('#regProgress').hide();
       $('#current-user').html('Welcome, ' + $('#regUsername').val() + '! <span class="caret"></span>');
       $('#show-list').show();
     };
@@ -99,6 +103,7 @@ $(document).ready(function() {
   // login user
   $('#login').click(function(){
     $('#current-user').html('Logging in...');
+    $('#logProgress').show();
     var credentials = {
       username: $('#logUsername').val(),
       password: $('#logPassword').val()
@@ -110,6 +115,7 @@ $(document).ready(function() {
         $('#current-user').html('Login/Register<span class="caret"></span>');
         return;
       } $('#logModal').modal('hide');
+        $('#logProgress').hide();
       $('#current-user').html('Welcome, ' + $('#logUsername').val() + '! <span class="caret"></span>');
       console.log($('#logUsername').val());
       $('#show-list').show();
