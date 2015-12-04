@@ -40,6 +40,19 @@ Besides finishing WDI, you surely have one or two things you'd love to do with y
 - Added xhr credentials to Front-End AJAX to tells jquery to use cookies
 - Upgraded Map functionality, geo JSON tied to map layers
 
+### Technologies
+
+The client side of this application is built with standard HTML and CSS, calling multiple stylesheets and scripts for appearance and interactivity.
+
+The main window is powered by the MapBox API, which incorporates both OpenLayers web map layers to generate image tiles, and the Leaflet API, which provides methods for acting on the map layers.
+
+Non-authenticated users are able to search without logging in. Search results are generated via an AJAX query to the backend, where the parsed JSON is repackaged in to another query that is sent to FourSquare. Results are returned in JSON, where they are parsed in to a Handlebars template for HTML rendereing. For security, FourSquare access keys are hidden in the back end environmental configuration values.
+
+A second callback is run on that FourSquare search JSON response, which is used to generate map markers on a new map layer. A javascript function is used to iterate through the Foursquare JSON, repackaging latitude and longitude values in to geoJSON for MapBox's rendering of markers. Those geoJSON values are then used for click handling interactions, ie, search data mouseover is paired to the corresponding marker's pop field.
+
+Our CRUD actions, which interact with an authenticated user's bucket list, are handled by standard AJAX calls to our back end Express application. JSON data is packaged and sent back and forth between the front and back ends.
+
+
 ## Challenges
 
 Our biggest challenge during production was knowing what data was coming back, whether Foursquare, Map pin, or BucketList data.  Our best practice is to use chrome console and console log everything.
