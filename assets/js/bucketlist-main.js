@@ -3,6 +3,8 @@ var blapi = blapi || {};
 
 $(document).ready(function() {
   $('#show-list').hide();
+  $('#logAlert').hide();
+  $('#regAlert').hide();
 
   $('#search').on('submit', function(e){
     e.preventDefault();
@@ -71,9 +73,9 @@ $(document).ready(function() {
       confirmpassword: $('#confirmPassword').val()
     };
     if (credentials.password !== credentials.confirmpassword) {
-      alert('Registration Failed!');
+      $('#regAlert').show();
       return;
-    } alert('Registration Successful! Standby for autologin...');
+    } $('#current-user').html('Logging in...');
     blapi.register(credentials, function(err) {
       if (err) {
         console.error(err);
@@ -82,9 +84,9 @@ $(document).ready(function() {
     var regCb = function(err) {
       if (err){
         console.error(err);
-        alert('Login Failed');
+        $('#current-user').html('Login/Register<span class="caret"></span>');
         return;
-      }
+      } $('#regModal').modal('hide');
       $('#current-user').html('Welcome, ' + $('#regUsername').val() + '! <span class="caret"></span>');
       $('#show-list').show();
     };
@@ -96,6 +98,7 @@ $(document).ready(function() {
 
   // login user
   $('#login').click(function(){
+    $('#current-user').html('Logging in...');
     var credentials = {
       username: $('#logUsername').val(),
       password: $('#logPassword').val()
@@ -103,9 +106,10 @@ $(document).ready(function() {
     var loginCb = function(err) {
       if (err){
         console.error(err);
-        alert('Login Failed');
+        $('#logAlert').show();
+        $('#current-user').html('Login/Register<span class="caret"></span>');
         return;
-      }
+      } $('#logModal').modal('hide');
       $('#current-user').html('Welcome, ' + $('#logUsername').val() + '! <span class="caret"></span>');
       console.log($('#logUsername').val());
       $('#show-list').show();
