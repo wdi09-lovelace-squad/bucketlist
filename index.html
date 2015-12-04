@@ -136,9 +136,10 @@
               <ul>
                 {{#each venues}}
                 <li>
-                  <div class="list-result" value={{id}}>
-                    <a href={{url}}><h4 class="fancy">{{name}}</h4></a>
-                      <div name="category">
+                  <div class="list-result">
+                    <h4 class="fancy"><a href='#list-window' class='add-from-search' value='{{name}}'><i class="fa fa-plus fa-fw"></i></a> {{name}}</h4>
+                      <div name="link">
+                        url: <a href={{url}} target='_blank'>{{url}}</a>
                       </div>
                       <div class="venueAddressData">
                         <div class="venueAddress">{{location.address}}<br>{{location.city}}, {{location.state}}

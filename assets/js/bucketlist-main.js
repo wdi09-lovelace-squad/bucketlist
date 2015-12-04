@@ -148,6 +148,18 @@ $(document).ready(function() {
     });
   });
 
+  $('#search-results').on('click', '.add-from-search', function(){
+  var venue = {
+    venue: $(this).attr('value')
+  };
+  blapi.addToList(venue, function (err){
+    if (err) {
+      console.error(err);
+    }
+    blapi.showList(refreshList);
+  });
+});
+
   var listTemplate = Handlebars.compile($('#list-template').html());
 
   // list will refresh and open when you click in nav bar
