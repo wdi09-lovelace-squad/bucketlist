@@ -112,6 +112,7 @@ $(document).ready(function() {
       if (err){
         console.error(err);
         $('#logAlert').show();
+        $('#logProgress').hide();
         $('#current-user').html('Login/Register<span class="caret"></span>');
         return;
       } $('#logModal').modal('hide');
