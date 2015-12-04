@@ -102,6 +102,7 @@ $(document).ready(function() {
 
   // login user
   $('#login').click(function(){
+    $('#logAlert').hide();
     $('#current-user').html('<i class="fa fa-spinner fa-pulse"></i>  Logging in...');
     $('#logProgress').show();
     var credentials = {
