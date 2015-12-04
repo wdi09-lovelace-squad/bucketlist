@@ -77,7 +77,7 @@ $(document).ready(function() {
     if (credentials.password !== credentials.confirmpassword) {
       $('#regAlert').show();
       return;
-    } $('#current-user').html('Logging in...');
+    } $('#current-user').html('<i class="fa fa-spinner fa-pulse"></i>  Logging in...');
       $('#regProgress').show();
     blapi.register(credentials, function(err) {
       if (err) {
@@ -102,7 +102,7 @@ $(document).ready(function() {
 
   // login user
   $('#login').click(function(){
-    $('#current-user').html('Logging in...');
+    $('#current-user').html('<i class="fa fa-spinner fa-pulse"></i>  Logging in...');
     $('#logProgress').show();
     var credentials = {
       username: $('#logUsername').val(),
