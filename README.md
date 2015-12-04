@@ -91,24 +91,24 @@ As a user I want to be able to mark a to-do item completed.
 
 In order to make sure we completed all of our goals we wrote up a rough schedule during our 9am Stand-ups the last few days so that we were all on the same page about what we needed to achieve that day.
 
-> ***Wed Tasks***:
-> finish Delete CRUD today by lunch
-> in html, editNote button in todo list
-> in js, add click handler to show form to edit the note
-> in html, update div in todo list window, to add input
-> in js, ajax patch
-> in html, which then will need a save button
-> in js, add click handler
-> in html, completed button in todo list
-> in js, add click handler
-> in html, trash button in todo list
-> in js, add click handler
->
-> ***Thu Tasks***:
-> CSS styling of everything!
-> Logout needs to be rewritten
-> edit pencil needs to toggle
-> completed new schema value
+| ***Wed Tasks***                                         |
+| finish Delete CRUD today by lunch                       |
+| in html, editNote button in todo list                   |
+| in js, add click handler to show form to edit the note  |
+| in html, update div in todo list window, to add input   |
+| in js, ajax patch                                       |
+| in html, which then will need a save button             |
+| in js, add click handler                                |
+| in html, completed button in todo list                  |
+| in js, add click handler                                |
+| in html, trash button in todo list                      |
+| in js, add click handler                                |
+|                                                         |
+| ***Thu Tasks***                                         |
+| CSS styling of everything!                              |
+| Logout needs to be rewritten                            |
+| edit pencil needs to toggle                             |
+| completed new schema value                              |
 
 ## Known Issues
 
